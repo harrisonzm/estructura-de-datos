@@ -10,7 +10,7 @@ struct NodoSimple {
 };
 
 template<class T>
-class List1 {
+class SingleLinkedList {
 
 public:
         int Len();
@@ -30,8 +30,8 @@ public:
         T removeLast();
         T remove(NodoSimple<T>* );
 
-        List1();
-        ~List1();
+        SingleLinkedList();
+        ~SingleLinkedList();
 
 private:
     NodoSimple<T>* head = nullptr ;
@@ -43,19 +43,19 @@ private:
 // IMPLEMENTATION
 
 template<class T>
-int List1<T>::Len() { return len; }
+int SingleLinkedList<T>::Len() { return len; }
 
 template<class T>
-bool List1<T>::isEmpty() { return len == 0; }
+bool SingleLinkedList<T>::isEmpty() { return len == 0; }
 
 template<class T>
-NodoSimple<T>* List1<T>::First() { return head; }
+NodoSimple<T>* SingleLinkedList<T>::First() { return head; }
 
 template<class T>
-NodoSimple<T>* List1<T>::Last() { return tail; }
+NodoSimple<T>* SingleLinkedList<T>::Last() { return tail; }
 
 template<class T>
-void List1<T>::traverse() {
+void SingleLinkedList<T>::traverse() {
     if (len == 0) {
         std::cout << "nothing here";
     }
@@ -73,7 +73,7 @@ void List1<T>::traverse() {
 }
 
 template<class T>
-NodoSimple<T>* List1<T>::findIndex(int index) {
+NodoSimple<T>* SingleLinkedList<T>::findIndex(int index) {
     int count = 0;
     NodoSimple<T>* curr = this->First();
     while (count != index) {
@@ -84,7 +84,7 @@ NodoSimple<T>* List1<T>::findIndex(int index) {
 }
 
 template<class T>
-NodoSimple<T>* List1<T>::find(T val) {
+NodoSimple<T>* SingleLinkedList<T>::find(T val) {
     NodoSimple<T>* curr = this->First();
     while (curr != nullptr && curr->value != val) {
         curr = curr->next;
@@ -95,7 +95,7 @@ NodoSimple<T>* List1<T>::find(T val) {
 
 
 template<class T>
-void List1<T>::addFirst(T objeto) {
+void SingleLinkedList<T>::addFirst(T objeto) {
     NodoSimple<T>* newNode = new NodoSimple<T>;
     newNode->value = objeto;
     if (this->isEmpty()) {
@@ -114,7 +114,7 @@ void List1<T>::addFirst(T objeto) {
 }
 
 template<class T>
-void List1<T>::addLast(T objeto) {
+void SingleLinkedList<T>::addLast(T objeto) {
     NodoSimple<T>* newNode = new NodoSimple<T>;
     newNode->value = objeto;
 
@@ -132,7 +132,7 @@ void List1<T>::addLast(T objeto) {
 }
 
 template<class T>
-void List1<T>::addAfter(NodoSimple<T>* node, T valu) {
+void SingleLinkedList<T>::addAfter(NodoSimple<T>* node, T valu) {
     NodoSimple<T>* newNode = new NodoSimple<T>;
     newNode->value = valu;
     if (!isEmpty()) {
@@ -152,7 +152,7 @@ void List1<T>::addAfter(NodoSimple<T>* node, T valu) {
 
 
 template<class T>
-T List1<T>::removeFirst() {
+T SingleLinkedList<T>::removeFirst() {
     if (isEmpty()) {
         return NULL;
     }
@@ -176,7 +176,7 @@ T List1<T>::removeFirst() {
 }
 
 template<class T>
-T List1<T>::removeLast() {
+T SingleLinkedList<T>::removeLast() {
     if (this->len == 1) {
         T temp = head->value;
         delete head;
@@ -200,7 +200,7 @@ T List1<T>::removeLast() {
 }
 
 template<class T>
-T List1<T>::remove(NodoSimple<T>* node) {
+T SingleLinkedList<T>::remove(NodoSimple<T>* node) {
     if (this->len == 0) {
         return NULL;
     }
@@ -248,12 +248,12 @@ T List1<T>::remove(NodoSimple<T>* node) {
 }
 
 template<class T>
-List1<T>::List1() {
+SingleLinkedList<T>::SingleLinkedList() {
     std::cout << "created " << "\n";
 }
 
 template<class T>
-List1<T>::~List1() {
+SingleLinkedList<T>::~SingleLinkedList() {
     if (this->len == 0) {
         std::cout << "exploded" << "\n";
     }

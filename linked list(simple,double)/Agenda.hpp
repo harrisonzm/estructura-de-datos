@@ -3,7 +3,7 @@
 #include <cstddef> 
 #include <fstream>
 #include <iostream>
-template<size_t size>
+
 class Agenda {
 
 public:
@@ -15,13 +15,14 @@ public:
     void toFile();
     void import();
 
-    Agenda();
+    Agenda(int);
     ~Agenda();
 
 private:
 
     Usuario* registro = nullptr;
     int no_registro = 0;
+    int size = 0;
 };
 
 

@@ -2,19 +2,24 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Usuario.h"
-#include "Agenda.h"
+#include "Usuario.hpp"
+#include "Agenda.hpp"
 
-template<size_t size>
-Agenda<size>::Agenda() 
+
+Agenda::Agenda(int size) 
 {
     registro = new Usuario[size];
+    this->size = size;
 }
 
-template<size_t size>
-int Agenda<size>::buscar(int id) 
-{
-    if (no_registro == 0) {
+
+int Agenda::buscar(int id) 
+{   
+    if (size == no_registro)
+    {
+        return -1;
+    }
+    else if (no_registro == 0) {
         return -1;
     }
     else {
@@ -27,8 +32,8 @@ int Agenda<size>::buscar(int id)
     }
 }
 
-template<size_t size>
-bool Agenda<size>::agregar(Usuario& user) 
+
+bool Agenda::agregar(Usuario& user) 
 {
     if (buscar(user.getId()) != -1) {
         registro[no_registro] = user;
@@ -42,8 +47,8 @@ bool Agenda<size>::agregar(Usuario& user)
     }
 }
 
-template<size_t size>
-bool Agenda<size>::eliminar(int id) 
+
+bool Agenda::eliminar(int id) 
 {
     int index = buscar(id);
     if (index == 1) {
@@ -58,20 +63,20 @@ bool Agenda<size>::eliminar(int id)
     }
 }
 
-template<size_t size>
-void Agenda<size>::toFile() 
+
+void Agenda::toFile() 
 {
     std::ofstream archivo;
     archivo.open("agenda.txt", std::ios::out);
     for (int i = 0; i < no_registro; i++) {
-        archivo << registro[i] + "\n";
+        archivo << registro[i] << "\n";
     }
     archivo.close();
 
 }
 
-template<size_t size>
-void Agenda<size>::import() 
+
+void Agenda::import() 
 {
     std::string linea;
     std::ifstream archivo;
@@ -79,18 +84,19 @@ void Agenda<size>::import()
     while (!archivo.eof()) 
     {
 
-        archivo.getline(archivo, linea);
+        getline(archivo, linea,',');
         std::string info[11];
         std::string infoPiece = "";
+        int count = 0;
         for (int i = 0; i < linea.size(); i++){
-            char   letra = linea.at(i);
+            std::string letra = std::string(1,linea.at(i));
             std::string salto1 = letra + linea.at(i + 1);
-            std::string salto2 = linea.at(i - 1) + letra;
+            std::string salto2 =  linea.at(i - 1) + letra;
             if (salto1 == "\n" || salto2 == "\n") {
                 continue;
             }
             if ((linea.at(i) - ',') == 0 || linea.at(i) == '-') {
-                info.append(infoPiece);
+                info[count++];
                 infoPiece = "";
                 continue;
 
@@ -99,8 +105,8 @@ void Agenda<size>::import()
                 infoPiece += linea.at(i);
             }
         }
-        Usuario user = Usuario(linea[0], linea[1], Fecha((int)linea[2], (int)linea[3], (int)linea[4]), linea[5], (int)linea[6], linea[7], Direccion(linea[8], linea[9], linea[10], linea[11]));
-        (this->registro)[no_registro] = user;
+        Usuario* user = new Usuario(linea[0], linea[1], new Fecha(linea[2], linea[3], linea[4]), linea[5], linea[6], linea[7], new Direccion(linea[8], linea[9], linea[10], linea[11]));
+        registro[no_registro] = user;
         no_registro++;
 
 
@@ -108,8 +114,8 @@ void Agenda<size>::import()
     }
     archivo.close();
 }
-template<size_t size>
-Agenda<size>::~Agenda() 
+
+Agenda::~Agenda() 
 {
     delete[] registro;
 }

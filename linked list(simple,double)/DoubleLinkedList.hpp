@@ -10,7 +10,7 @@ struct NodoDoble {
 };
 
 template<typename T>
-class List2 {
+class DoubleLinkedList {
 
 public:
     int Len();
@@ -30,8 +30,8 @@ public:
     T& removeLast();
     T& remove(struct NodoDoble<T>* );
 
-    List2();
-    ~List2();
+    DoubleLinkedList();
+    ~DoubleLinkedList();
 
 private:
     struct NodoDoble<T>* head = nullptr;
@@ -42,19 +42,19 @@ private:
 //IMPLEMENTATION
 
 template<class T>
-int List2<T>::Len() { return len; }
+int DoubleLinkedList<T>::Len() { return len; }
 
 template<class T>
-bool List2<T>::isEmpty() { return len == 0; }
+bool DoubleLinkedList<T>::isEmpty() { return len == 0; }
 
 template<class T>
-NodoDoble<T>* List2<T>::First() { return head; }
+NodoDoble<T>* DoubleLinkedList<T>::First() { return head; }
 
 template<class T>
-NodoDoble<T>* List2<T>::Last() { return tail; }
+NodoDoble<T>* DoubleLinkedList<T>::Last() { return tail; }
 
 template<class T>
-NodoDoble<T>* List2<T>::find(T val) {
+NodoDoble<T>* DoubleLinkedList<T>::find(T val) {
     NodoDoble<T>* curr = head;
     while (curr != nullptr && curr->value != val) {
         curr = curr->next;
@@ -63,7 +63,7 @@ NodoDoble<T>* List2<T>::find(T val) {
 }
 
 template<class T>
-void List2<T>::addFirst(T objeto) {
+void DoubleLinkedList<T>::addFirst(T objeto) {
     struct NodoDoble<T>* newNode = new struct NodoDoble<T>;
     newNode->value = objeto;
     if (len == 0) {
@@ -78,7 +78,7 @@ void List2<T>::addFirst(T objeto) {
 }
 
 template<class T>
-void List2<T>::addLast(T objeto) {
+void DoubleLinkedList<T>::addLast(T objeto) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
     newNode->value = objeto;
     if (len == 0) {
@@ -95,7 +95,7 @@ void List2<T>::addLast(T objeto) {
 }
 
 template<class T>
-void List2<T>::addBefore( NodoDoble<T>* node, T val) {
+void DoubleLinkedList<T>::addBefore( NodoDoble<T>* node, T val) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
     newNode->value = val;
     if (node == head) {
@@ -117,7 +117,7 @@ void List2<T>::addBefore( NodoDoble<T>* node, T val) {
 }
 
 template<class T>
-void List2<T>::addAfter(NodoDoble<T>* node, T val) {
+void DoubleLinkedList<T>::addAfter(NodoDoble<T>* node, T val) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
     newNode->value = val;
     if (node == tail) {
@@ -137,7 +137,7 @@ void List2<T>::addAfter(NodoDoble<T>* node, T val) {
 }
 
 template<class T>
-T& List2<T>::removeFirst() {
+T& DoubleLinkedList<T>::removeFirst() {
     if (this->len == 0) {
         return NULL;
     }
@@ -161,7 +161,7 @@ T& List2<T>::removeFirst() {
 }
 
 template<class T>
-T& List2<T>::removeLast() {
+T& DoubleLinkedList<T>::removeLast() {
     if (this->len == 0) {
 
         return NULL;
@@ -186,7 +186,7 @@ T& List2<T>::removeLast() {
 }
 
 template<class T>
-T& List2<T>::remove(NodoDoble<T>* node) {
+T& DoubleLinkedList<T>::remove(NodoDoble<T>* node) {
     if (this->len == 0) {
         T temp ;
         return temp ;
@@ -227,7 +227,7 @@ T& List2<T>::remove(NodoDoble<T>* node) {
 }
 
 template<class T>
-void List2<T>::traverse() {
+void DoubleLinkedList<T>::traverse() {
     if (len == 0) {
         std::cout << "nothing here";
     }
@@ -243,12 +243,12 @@ void List2<T>::traverse() {
 }
 
 template<class T>
-List2<T>::List2() {
+DoubleLinkedList<T>::DoubleLinkedList() {
     std::cout << "created " << "\n";
 }
 
 template<class T>
-List2<T>::~List2() {
+DoubleLinkedList<T>::~DoubleLinkedList() {
     if (this->len == 0) {}
     else {
         NodoDoble<T>* temp = head;

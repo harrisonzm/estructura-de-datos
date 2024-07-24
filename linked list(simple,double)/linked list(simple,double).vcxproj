@@ -128,8 +128,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Administrador.cpp" />
+    <ClCompile Include="Empleado.cpp" />
     <ClCompile Include="lab5.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mensaje.cpp" />
+    <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Usuario.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -137,9 +141,13 @@
     <ClCompile Include="lab4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lab4.h" />
-    <ClInclude Include="Usuario.h" />
-    <ClInclude Include="Agenda.h" />
+    <ClInclude Include="Administrador.hpp" />
+    <ClInclude Include="Empleado.hpp" />
+    <ClInclude Include="lab4.hpp" />
+    <ClInclude Include="Mensaje.hpp" />
+    <ClInclude Include="sort.hpp" />
+    <ClInclude Include="Usuario.hpp" />
+    <ClInclude Include="Agenda.hpp" />
     <ClInclude Include="DoubleLinkedList.hpp" />
     <ClInclude Include="SingleLinkedList.hpp" />
   </ItemGroup>

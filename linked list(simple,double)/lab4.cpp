@@ -1,11 +1,11 @@
 #include "DoubleLinkedList.hpp"
 #include "SingleLinkedList.hpp"
-#include "Usuario.h"
-#include "lab4.h"
+#include "Usuario.hpp"
+#include "lab4.hpp"
 #include<iostream>
 #include<string>
 
-void printUsers(List1<Usuario> L) {
+void printUsers(SingleLinkedList<Usuario> L) {
     NodoSimple<Usuario>* curr1 = L.First();
     int count = 1;
     while (curr1->next != nullptr) {
@@ -16,7 +16,7 @@ void printUsers(List1<Usuario> L) {
     std::cout << curr1->value.getNombre()<< std::format("%d",count) << "\n";
 }
 
-void printUsers(List2<Usuario> L) {
+void printUsers(DoubleLinkedList<Usuario> L) {
     NodoDoble<Usuario>* curr2 = L.First();
     int count = 1;
     while (curr2->next != nullptr) {
@@ -33,7 +33,7 @@ void puntoA() {
 
 
     // single linked list
-    List1<int> simple;
+    SingleLinkedList<int> simple;
     int i = 1;
     simple.addLast(i);
     for (i = 2; i <= 20; i++) {
@@ -52,7 +52,7 @@ void puntoA() {
     simple.traverse();
 
     // doubly linked list
-    List2<int> doble;
+    DoubleLinkedList<int> doble;
     int j = 1;
     for (j = 1; j <= 20; j++) {
         if (j == 1) { doble.addLast(j); }
@@ -97,8 +97,8 @@ void puntoB() {
     Usuario* user9 = new Usuario(*user4);
     Usuario* user10 = new Usuario(*user5);
 
-    List1<Usuario> simple;
-    List2<Usuario> doble;
+    SingleLinkedList<Usuario> simple;
+    DoubleLinkedList<Usuario> doble;
 
     simple.addLast(*user1);
     simple.addLast(*user2);

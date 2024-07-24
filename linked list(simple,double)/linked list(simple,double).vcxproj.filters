@@ -42,9 +42,21 @@
     <ClCompile Include="lab5.cpp">
       <Filter>Archivos de recursos\laboratorios</Filter>
     </ClCompile>
+    <ClCompile Include="Sort.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Empleado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Administrador.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Mensaje.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Agenda.h">
+    <ClInclude Include="Agenda.hpp">
       <Filter>Archivos de encabezado\clases</Filter>
     </ClInclude>
     <ClInclude Include="DoubleLinkedList.hpp">
@@ -53,11 +65,23 @@
     <ClInclude Include="SingleLinkedList.hpp">
       <Filter>Archivos de encabezado\clases</Filter>
     </ClInclude>
-    <ClInclude Include="Usuario.h">
+    <ClInclude Include="Usuario.hpp">
       <Filter>Archivos de encabezado\clases</Filter>
     </ClInclude>
-    <ClInclude Include="lab4.h">
+    <ClInclude Include="lab4.hpp">
       <Filter>Archivos de encabezado\labs</Filter>
+    </ClInclude>
+    <ClInclude Include="sort.hpp">
+      <Filter>Archivos de encabezado\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Administrador.hpp">
+      <Filter>Archivos de encabezado\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Empleado.hpp">
+      <Filter>Archivos de encabezado\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Mensaje.hpp">
+      <Filter>Archivos de encabezado\clases</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
