@@ -12,8 +12,31 @@ Mensaje Empleado::buscar_mensaje(int id, std::string titulo, std::string fecha, 
 		curr = curr->next;
 	}
 }
+
 void Empleado::ver_mensaje(int id, std::string titulo, std::string fecha, std::string hora)
 {
 	Mensaje toShow = buscar_mensaje(id, titulo, fecha, hora);
 	std::cout << toShow.get_contenido() << std::endl;
 }
+
+bool Empleado::eliminar_mensaje(std::string titulo, std::string fecha, std::string hora)
+{
+	NodoDoble<Mensaje>* curr = mensajes.First();
+	while(curr != nullptr)
+	{
+		if(curr->value.get_titulo() == titulo && curr->value.get_fecha() == fecha && curr->value.get_hora() == hora)
+		{
+			mensajes.remove(curr);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Empleado::enviar_mensaje(std::string contenido)
+{
+	
+}
+
+
+

@@ -31,6 +31,8 @@ public:
     T& remove(struct NodoDoble<T>* );
 
     DoubleLinkedList();
+    DoubleLinkedList(NodoDoble<T>*, int);
+    DoubleLinkedList(NodoDoble<T>*);
     ~DoubleLinkedList();
 
 private:
@@ -246,6 +248,25 @@ template<class T>
 DoubleLinkedList<T>::DoubleLinkedList() {
     std::cout << "created " << "\n";
 }
+
+template<class T>
+DoubleLinkedList<T>::DoubleLinkedList(NodoDoble<T>* head, int n) {
+
+    while (n > 0) {
+		this->addLast(head->value);
+		head = head->next;
+		n--;
+	}
+}
+
+template<class T>
+DoubleLinkedList<T>::DoubleLinkedList(NodoDoble<T>* head) {
+    while(head != nullptr) {
+		this->addLast(head->value);
+		head = head->next;
+	}
+}
+
 
 template<class T>
 DoubleLinkedList<T>::~DoubleLinkedList() {
