@@ -2,13 +2,13 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Usuario.hpp"
-#include "Agenda.hpp"
+#include "../src/classes for labs/headers/Usuario.hpp"
+#include "../src/DSA/headers/Array.hpp"
 
 
 Agenda::Agenda(int size) 
 {
-    registro = new Usuario[size];
+    Usuario *registro = new Usuario[size];
     this->size = size;
 }
 
@@ -35,7 +35,7 @@ int Agenda::buscar(int id)
 
 bool Agenda::agregar(Usuario& user) 
 {
-    if (buscar(user.getId()) != -1) {
+    if (buscar(user.getId()) > -1) {
         registro[no_registro] = user;
         no_registro++;
         return true;
@@ -69,7 +69,7 @@ void Agenda::toFile()
     std::ofstream archivo;
     archivo.open("agenda.txt", std::ios::out);
     for (int i = 0; i < no_registro; i++) {
-        archivo << registro[i] << "\n";
+        archivo << registro[i].toString();
     }
     archivo.close();
 
@@ -85,28 +85,22 @@ void Agenda::import()
     {
 
         getline(archivo, linea,',');
-        std::string info[11];
+        std::string info[12];
         std::string infoPiece = "";
         int count = 0;
         for (int i = 0; i < linea.size(); i++){
-            std::string letra = std::string(1,linea.at(i));
-            std::string salto1 = letra + linea.at(i + 1);
-            std::string salto2 =  linea.at(i - 1) + letra;
-            if (salto1 == "\n" || salto2 == "\n") {
-                continue;
-            }
-            if ((linea.at(i) - ',') == 0 || linea.at(i) == '-') {
-                info[count++];
-                infoPiece = "";
-                continue;
-
-            }
-            else {
-                infoPiece += linea.at(i);
-            }
+			if (linea[i] == ','){
+				info[count] = infoPiece;
+				infoPiece = "";
+				count++;
+			}
+			else{
+				infoPiece += linea[i];
+			}
+            
         }
-        Usuario* user = new Usuario(linea[0], linea[1], new Fecha(linea[2], linea[3], linea[4]), linea[5], linea[6], linea[7], new Direccion(linea[8], linea[9], linea[10], linea[11]));
-        registro[no_registro] = user;
+        Usuario* user = new Usuario(info[0], std::stoi(info[1]), new Fecha(std::stoi(info[2]), std::stoi(info[3]), std::stoi(info[4])), info[5], std::stoi(info[6]), info[7], new Direccion(info[8], info[9], info[10], info[11]));
+        registro[no_registro] = *user;
         no_registro++;
 
 

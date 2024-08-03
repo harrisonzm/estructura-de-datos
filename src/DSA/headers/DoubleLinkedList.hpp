@@ -17,7 +17,9 @@ public:
     bool isEmpty();
 
     struct NodoDoble<T>* First();
+    void setFirst(struct NodoDoble<T>*);
     struct NodoDoble<T>* Last();
+    void setLast(struct NodoDoble<T>*);
     struct NodoDoble<T>* find(T );
     void traverse();
 
@@ -51,18 +53,25 @@ bool DoubleLinkedList<T>::isEmpty() { return len == 0; }
 
 template<class T>
 NodoDoble<T>* DoubleLinkedList<T>::First() { return head; }
+template<class T>
+void DoubleLinkedList<T>::setFirst(NodoDoble<T>* node) { head = node; }
 
 template<class T>
 NodoDoble<T>* DoubleLinkedList<T>::Last() { return tail; }
 
 template<class T>
-NodoDoble<T>* DoubleLinkedList<T>::find(T val) {
+void DoubleLinkedList<T>::setLast(NodoDoble<T>* node) { tail = node; }
+
+template<class T>
+NodoDoble<T>* DoubleLinkedList<T>::find(T val) 
+{
     NodoDoble<T>* curr = head;
-    while (curr != nullptr && curr->value != val) {
+    while ((curr != nullptr) && (curr->value != val))
+    {
         curr = curr->next;
     }
     return curr;
-}
+};
 
 template<class T>
 void DoubleLinkedList<T>::addFirst(T objeto) {
@@ -190,11 +199,11 @@ T& DoubleLinkedList<T>::removeLast() {
 template<class T>
 T& DoubleLinkedList<T>::remove(NodoDoble<T>* node) {
     if (this->len == 0) {
-        T temp ;
+        T& temp = *(new T()) ;
         return temp ;
     }
     else if (node == head && len == 1) {
-        T val = head->value;
+        T& val = head->value;
         delete head;
         head, tail = nullptr;
         len--;
@@ -202,7 +211,7 @@ T& DoubleLinkedList<T>::remove(NodoDoble<T>* node) {
 
     }
     else if (node == head) {
-        T val = node->value;
+        T& val = node->value;
         head = node->next;
         head->prev = nullptr;
         delete node;
@@ -213,13 +222,13 @@ T& DoubleLinkedList<T>::remove(NodoDoble<T>* node) {
 
         tail = node->prev;
         tail->next = nullptr;
-        T val = node->value;
+        T& val = node->value;
         delete node;
         len--;
         return val;
     }
     else {
-        T val = node->value;
+        T& val = node->value;
         (node->prev)->next = node->next;
         (node->next)->prev = node->prev;
         delete node;

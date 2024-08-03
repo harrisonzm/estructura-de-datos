@@ -18,10 +18,41 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\classes for labs\Administrador.cpp" />
+    <ClCompile Include="src\classes for labs\Empleado.cpp" />
+    <ClCompile Include="src\classes for labs\Mensaje.cpp" />
+    <ClCompile Include="src\classes for labs\Usuario.cpp" />
+    <ClCompile Include="src\DSA\Array.cpp" />
+    <ClCompile Include="src\DSA\DynamicArray.cpp" />
+    <ClCompile Include="src\DSA\HashTable.cpp" />
+    <ClCompile Include="src\DSA\Heap.cpp" />
+    <ClCompile Include="src\DSA\Queue.cpp" />
+    <ClCompile Include="src\DSA\Sort.cpp" />
+    <ClCompile Include="src\DSA\Stack.cpp" />
+    <ClCompile Include="src\DSA\Tree.cpp" />
+    <ClCompile Include="src\labs\lab4.cpp" />
+    <ClCompile Include="src\labs\lab5.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\classes for labs\headers\Administrador.hpp" />
+    <ClInclude Include="src\classes for labs\headers\Empleado.hpp" />
+    <ClInclude Include="src\classes for labs\headers\Mensaje.hpp" />
+    <ClInclude Include="src\classes for labs\headers\Usuario.hpp" />
+    <ClInclude Include="src\DSA\headers\Array.hpp" />
+    <ClInclude Include="src\DSA\headers\DoubleLinkedList.hpp" />
+    <ClInclude Include="src\DSA\headers\DynamicArray.hpp" />
+    <ClInclude Include="src\DSA\headers\Queue.hpp" />
+    <ClInclude Include="src\DSA\headers\SingleLinkedList.hpp" />
+    <ClInclude Include="src\DSA\headers\sort.hpp" />
+    <ClInclude Include="src\DSA\headers\Stack.hpp" />
+    <ClInclude Include="src\labs\headers\lab4.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a95e076b-694c-4fed-b9ed-f92e4eba0e96}</ProjectGuid>
+    <ProjectGuid>{501D2E00-C2FD-4355-9BB2-F540C85E9BF9}</ProjectGuid>
     <RootNamespace>linkedlistsimpledouble</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -70,12 +101,38 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)obj\</IntDir>
+    <TargetName>$(ProjectName)64D</TargetName>
+    <PublicIncludeDirectories>$(SolutionDir)src</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)obj\</IntDir>
+    <TargetName>$(ProjectName)32D</TargetName>
+    <PublicIncludeDirectories>$(SolutionDir)src</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)obj\</IntDir>
+    <TargetName>$(ProjectName)32R</TargetName>
+    <PublicIncludeDirectories>$(SolutionDir)src</PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)obj\</IntDir>
+    <TargetName>$(ProjectName)64R</TargetName>
+    <PublicIncludeDirectories>$(SolutionDir)src</PublicIncludeDirectories>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)data structures</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +147,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)data structures</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +164,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)data structures</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +179,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)data structures</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,30 +189,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Administrador.cpp" />
-    <ClCompile Include="Empleado.cpp" />
-    <ClCompile Include="lab5.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mensaje.cpp" />
-    <ClCompile Include="Sort.cpp" />
-    <ClCompile Include="Usuario.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Agenda.cpp" />
-    <ClCompile Include="lab4.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Administrador.hpp" />
-    <ClInclude Include="Empleado.hpp" />
-    <ClInclude Include="lab4.hpp" />
-    <ClInclude Include="Mensaje.hpp" />
-    <ClInclude Include="sort.hpp" />
-    <ClInclude Include="Usuario.hpp" />
-    <ClInclude Include="Agenda.hpp" />
-    <ClInclude Include="DoubleLinkedList.hpp" />
-    <ClInclude Include="SingleLinkedList.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

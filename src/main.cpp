@@ -1,4 +1,4 @@
-#include "lab4.h"
+#include "labs/headers/lab4.hpp"
 
 int main() {
     puntoA();

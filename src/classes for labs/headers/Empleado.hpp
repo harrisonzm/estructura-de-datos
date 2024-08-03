@@ -1,7 +1,8 @@
 #pragma once
-#include "Usuario.hpp"
-#include "DoubleLinkedList.hpp"
-#include "Mensaje.hpp"
+#include "../src/classes for labs/headers/Empleado.hpp"
+#include "../src/DSA/headers/DoubleLinkedList.hpp"
+#include "../src/classes for labs/headers/Mensaje.hpp"
+#include "../src/classes for labs/headers/Usuario.hpp"
 #include <string>
 class Empleado : public Usuario
 {
@@ -11,7 +12,7 @@ class Empleado : public Usuario
 		bool enviar_mensaje(std::string);
 		
 		Empleado();
-		Empleado(std::string passw):Usuario(std::string , int, Fecha*, std::string, int, std::string , Direccion* );
+		Empleado(std::string passw);
 		~Empleado();
 
 	private:

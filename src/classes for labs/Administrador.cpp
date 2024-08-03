@@ -1,8 +1,8 @@
-#include "Administrador.hpp"
-#include "Empleado.hpp"
-#include "Usuario.hpp"
-#include "DoubleLinkedList.hpp"
-#include "Mensaje.hpp"a
+#include "../src/classes for labs/headers/Administrador.hpp"
+#include "../src/classes for labs/headers/Empleado.hpp"
+#include "../src/classes for labs/headers/Usuario.hpp"
+#include "../src/classes for labs/headers/Mensaje.hpp"
+#include "../src/DSA/headers/DoubleLinkedList.hpp"
 #include <string>
 
 bool Administrador::eliminar_usuario(int  id){
@@ -19,7 +19,9 @@ bool Administrador::eliminar_usuario(int  id){
 	return false;
 }
 
-void Administrador:: sort_users() {}
+void Administrador:: sort_users() {
+
+}
 
 bool Administrador::agregar_usuario(std::string name, int ID, std::string fecha, std::string ciudadN, int tel, std::string email, std::string calle, std::string nomenclatura, std::string barrio, std::string ciudad, std::string edificio, std::string apto) {
 	std::string formatF[3];

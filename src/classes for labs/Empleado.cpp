@@ -1,4 +1,4 @@
-#include "empleado.hpp"
+#include "../src/classes for labs/headers/Empleado.hpp"
 
 Mensaje Empleado::buscar_mensaje(int id, std::string titulo, std::string fecha, std::string hora)
 {
@@ -11,6 +11,7 @@ Mensaje Empleado::buscar_mensaje(int id, std::string titulo, std::string fecha, 
 		}
 		curr = curr->next;
 	}
+	return Mensaje();
 }
 
 void Empleado::ver_mensaje(int id, std::string titulo, std::string fecha, std::string hora)
@@ -35,6 +36,7 @@ bool Empleado::eliminar_mensaje(std::string titulo, std::string fecha, std::stri
 
 bool Empleado::enviar_mensaje(std::string contenido)
 {
+	return true;
 	
 }
 

@@ -99,7 +99,7 @@ class Usuario {
 
         std::string toString();
         std::ostream& operator<< (std::ostream& COUT);
-
+        bool operator!=(Usuario& u);
         ~Usuario();
 
 };

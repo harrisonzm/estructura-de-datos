@@ -1,7 +1,7 @@
+#include "../src/classes for labs/headers/Usuario.hpp"
 #include <iostream>
 #include <cstddef>
 #include <format>
-#include "Usuario.hpp"
 
 
 Fecha::Fecha(void) {}
@@ -126,12 +126,15 @@ std::string Usuario::getEmail() { return this->email; }
 Direccion* Usuario::getDir() { return this->dir; }
 
 std::string Usuario::toString() {
-    return std::format("%s,%d,%s,%s,%d,%s,%s", nombre, id, (fecha_nacimiento->toString()), ciudad_nacimiento, tel, email, dir->toString());
+    return std::format("%s,%d,%s,%s,%d,%s,%s\n", nombre, id, (fecha_nacimiento->toString()), ciudad_nacimiento, tel, email, dir->toString());
 }
 std::ostream& Usuario::operator<< (std::ostream& COUT) {
     std::string txt = toString();
     COUT << txt;
     return COUT;
+}
+bool Usuario::operator!= (Usuario& u) {
+	return &u != this;
 }
 
 Usuario::~Usuario() {

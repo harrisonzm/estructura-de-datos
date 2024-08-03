@@ -40,8 +40,8 @@ private:
 
 };
 
-// IMPLEMENTATION
 
+// IMPLEMENTATION
 template<class T>
 int SingleLinkedList<T>::Len() { return len; }
 
@@ -269,3 +269,4 @@ SingleLinkedList<T>::~SingleLinkedList() {
 
     }
 }
+
