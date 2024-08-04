@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include "../src/classes for labs/headers/Usuario.hpp"
-#include "../src/DSA/headers/Array.hpp"
+#include "../src/classes for labs/headers/Agenda.hpp"
 
 
 Agenda::Agenda(int size) 

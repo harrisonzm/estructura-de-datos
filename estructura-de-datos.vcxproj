@@ -23,30 +23,29 @@
     <ClCompile Include="src\classes for labs\Empleado.cpp" />
     <ClCompile Include="src\classes for labs\Mensaje.cpp" />
     <ClCompile Include="src\classes for labs\Usuario.cpp" />
-    <ClCompile Include="src\DSA\Array.cpp" />
-    <ClCompile Include="src\DSA\DynamicArray.cpp" />
-    <ClCompile Include="src\DSA\HashTable.cpp" />
-    <ClCompile Include="src\DSA\Heap.cpp" />
-    <ClCompile Include="src\DSA\Queue.cpp" />
+    <ClCompile Include="src\classes for labs\Agenda.cpp" />
     <ClCompile Include="src\DSA\Sort.cpp" />
-    <ClCompile Include="src\DSA\Stack.cpp" />
-    <ClCompile Include="src\DSA\Tree.cpp" />
+    <ClCompile Include="src\DSA\binaryTree.hpp" />
     <ClCompile Include="src\labs\lab4.cpp" />
     <ClCompile Include="src\labs\lab5.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DSA\Graphs.hpp" />
+    <ClInclude Include="src\DSA\HashTable.hpp" />
+    <ClInclude Include="src\DSA\MinHeap.hpp" />
     <ClInclude Include="src\classes for labs\headers\Administrador.hpp" />
     <ClInclude Include="src\classes for labs\headers\Empleado.hpp" />
     <ClInclude Include="src\classes for labs\headers\Mensaje.hpp" />
     <ClInclude Include="src\classes for labs\headers\Usuario.hpp" />
-    <ClInclude Include="src\DSA\headers\Array.hpp" />
-    <ClInclude Include="src\DSA\headers\DoubleLinkedList.hpp" />
-    <ClInclude Include="src\DSA\headers\DynamicArray.hpp" />
-    <ClInclude Include="src\DSA\headers\Queue.hpp" />
-    <ClInclude Include="src\DSA\headers\SingleLinkedList.hpp" />
-    <ClInclude Include="src\DSA\headers\sort.hpp" />
-    <ClInclude Include="src\DSA\headers\Stack.hpp" />
+    <ClInclude Include="src\classes for labs\headers\Agenda.hpp" />
+    <ClInclude Include="src\DSA\DoubleLinkedList.hpp" />
+    <ClInclude Include="src\DSA\DynamicArray.hpp" />
+    <ClInclude Include="src\DSA\MaxHeap.hpp" />
+    <ClInclude Include="src\DSA\Queue.hpp" />
+    <ClInclude Include="src\DSA\SingleLinkedList.hpp" />
+    <ClInclude Include="src\DSA\Sort.hpp" />
+    <ClInclude Include="src\DSA\Stack.hpp" />
     <ClInclude Include="src\labs\headers\lab4.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

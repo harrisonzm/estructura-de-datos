@@ -1,8 +1,26 @@
+#pragma once
 #include <exception>
-#include "../DSA/headers/SingleLinkedList.hpp"
-#include"../DSA/headers/Queue.hpp"
-#include <iostream>
-#include <cstddef>
+#include "../src/DSA/SingleLinkedList.hpp"
+
+template<typename T>
+class Queue 
+{
+public:
+
+    bool isEmpty();
+
+    void queue(T value);
+    T& dequeue();
+    
+    Queue();
+    ~Queue();
+
+private:    
+    SingleLinkedList<T>* storage = nullptr;
+};
+
+
+//IMPLEMENTATION
 
 template<typename T>
 bool Queue<T>::isEmpty()
@@ -12,7 +30,7 @@ bool Queue<T>::isEmpty()
 }
 
 template<typename T>
-void Queue<T>::queue(T value) 
+void Queue<T>::queue(T value)
 {
     storage->addFirst(T);
 }
@@ -32,11 +50,11 @@ T& Queue<T>::dequeue()
 }
 
 template<typename T>
-Queue<T>::Queue() 
+Queue<T>::Queue()
 {
 
 }
-   
+
 template<typename T>
 Queue<T>::~Queue()
 {

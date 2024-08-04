@@ -1,5 +1,33 @@
-#include "../DSA/headers/DynamicArray.hpp"
+#pragma once
 #include <cstddef>
+#include <array>
+
+template<class T>
+class DynamicArray
+{
+public:
+
+    const T& operator[](int index);
+
+    T& remove(int index);
+    void insert(int index, T& elemnt);
+    void Add(T& element);
+
+    int count(T& element);
+    
+    DynamicArray();
+    DynamicArray(size_t size);
+    ~DynamicArray();
+
+private:
+    T* array = nullptr;
+    int len = 0;
+    int size = 2;
+
+    void resize();
+};
+
+//IMPLEMENTATION
 
 template<class T>
 const T& DynamicArray<T>::operator[](int index)
@@ -69,10 +97,10 @@ void DynamicArray<T>::Add(T& element)
 
 }
 template<class T>
-int DynamicArray<T>::count(T& element) 
+int DynamicArray<T>::count(T& element)
 {
     int count = 0;
-    for (int i = 0; i < tamaño; i++) 
+    for (int i = 0; i < tamaño; i++)
     {
 
         count += (array[i] == element);
@@ -81,7 +109,7 @@ int DynamicArray<T>::count(T& element)
 }
 
 template<class T>
-DynamicArray<T>::DynamicArray() 
+DynamicArray<T>::DynamicArray()
 {
     arrray = new T[size];
 
@@ -90,15 +118,15 @@ DynamicArray<T>::DynamicArray()
 template<class T>
 DynamicArray<T>::DynamicArray(size_t size)
 {
-        array = new T[size];
-        this->size = size;
+    array = new T[size];
+    this->size = size;
 
 }
 
 template<class T>
-DynamicArray<T>::~DynamicArray() 
+DynamicArray<T>::~DynamicArray()
 {
-    delete[] array; 
+    delete[] array;
 }
 
 template<class T>

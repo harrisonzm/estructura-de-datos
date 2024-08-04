@@ -12,7 +12,7 @@
     <ClCompile Include="src\classes for labs\Administrador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\DSA\Array.cpp">
+    <ClCompile Include="src\classes for labs\Agenda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\classes for labs\Empleado.cpp">
@@ -34,21 +34,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\DSA\DynamicArray.cpp" />
-    <ClCompile Include="src\DSA\Stack.cpp" />
-    <ClCompile Include="src\DSA\Queue.cpp" />
-    <ClCompile Include="src\DSA\Tree.cpp" />
-    <ClCompile Include="src\DSA\Heap.cpp" />
-    <ClCompile Include="src\DSA\HashTable.cpp" />
+    <ClCompile Include="src\DSA\binaryTree.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes for labs\headers\Administrador.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DSA\headers\DoubleLinkedList.hpp">
+    <ClInclude Include="src\DSA\DoubleLinkedList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DSA\headers\Array.hpp">
+    <ClInclude Include="src\classes for labs\headers\Agenda.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes for labs\headers\Empleado.hpp">
@@ -60,17 +55,21 @@
     <ClInclude Include="src\classes for labs\headers\Mensaje.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DSA\headers\SingleLinkedList.hpp">
+    <ClInclude Include="src\DSA\SingleLinkedList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DSA\headers\sort.hpp">
+    <ClInclude Include="src\DSA\Sort.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes for labs\headers\Usuario.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DSA\headers\Queue.hpp" />
-    <ClInclude Include="src\DSA\headers\DynamicArray.hpp" />
-    <ClInclude Include="src\DSA\headers\Stack.hpp" />
+    <ClInclude Include="src\DSA\Queue.hpp" />
+    <ClInclude Include="src\DSA\DynamicArray.hpp" />
+    <ClInclude Include="src\DSA\Stack.hpp" />
+    <ClInclude Include="src\DSA\MinHeap.hpp" />
+    <ClInclude Include="src\DSA\MaxHeap.hpp" />
+    <ClInclude Include="src\DSA\HashTable.hpp" />
+    <ClInclude Include="src\DSA\Graphs.hpp" />
   </ItemGroup>
 </Project>

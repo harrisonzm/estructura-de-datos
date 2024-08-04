@@ -1,4 +1,4 @@
-#include "../src/DSA/headers/sort.hpp"
+#include "../src/DSA/Sort.hpp"
 #include <vector>
 
 std::vector<int> sort::insertion(std::vector<int> v)
@@ -62,14 +62,14 @@ std::vector<int> sort::merge(std::vector<int> v1,std::vector<int> v2)
 
 
 
-std::vector<int> sort::merge_sort(std::vector<int> list)
+std::vector<int> sort::mergeSort(std::vector<int> list)
 {
 	if (list.size() > 1) {
 		int mid = list.size() / 2;
 		std::vector<int> left(list.begin(), list.begin() + mid);
 		std::vector<int> right(list.begin() + mid, list.end());
-		left = merge_sort(left);
-		right = merge_sort(right);
+		left = mergeSort(left);
+		right = mergeSort(right);
 		list = merge(left, right);
 		
 	}
@@ -78,7 +78,7 @@ std::vector<int> sort::merge_sort(std::vector<int> list)
 	return list;
 }
 
-NodoDoble<Usuario>* sort::get_middle(DoubleLinkedList<Usuario>* list, int n){
+NodoDoble<Usuario>* sort::getMiddle(DoubleLinkedList<Usuario>* list, int n){
 	NodoDoble<Usuario>* curr = list->First();
 	for (int i = 0; i < n / 2 - 1; i++) {
 		curr = curr->next;
@@ -114,12 +114,12 @@ DoubleLinkedList<Usuario>* sort::mergeList(DoubleLinkedList<Usuario>* left, Doub
 }
 
 
-DoubleLinkedList<Usuario>* sort::merge_sort_list(DoubleLinkedList<Usuario>* list)
+DoubleLinkedList<Usuario>* sort::mergeSortList(DoubleLinkedList<Usuario>* list)
 {
 	if (list->First()->next == nullptr) {
 		return list;
 	}
-	NodoDoble<Usuario>* mid = get_middle(list, list->Len());
+	NodoDoble<Usuario>* mid = getMiddle(list, list->Len());
 	DoubleLinkedList<Usuario>* left = new DoubleLinkedList<Usuario>();
 	left->setFirst( list->First());
 	left->setLast(mid);
@@ -129,7 +129,7 @@ DoubleLinkedList<Usuario>* sort::merge_sort_list(DoubleLinkedList<Usuario>* list
 	right->setLast(list->Last());
 	mid->next = nullptr;
 
-	left =  merge_sort_list(left);
-	right = merge_sort_list(right);
+	left =  mergeSortList(left);
+	right = mergeSortList(right);
 	return mergeList(left, right);
 }
