@@ -13,13 +13,15 @@ template<typename T>
 class DoubleLinkedList {
 
 public:
-    int Len();
+    size_t Len();
     bool isEmpty();
 
     struct NodoDoble<T>* First();
-    void setFirst(struct NodoDoble<T>*);
     struct NodoDoble<T>* Last();
+
+    void setFirst(struct NodoDoble<T>*);
     void setLast(struct NodoDoble<T>*);
+
     struct NodoDoble<T>* find(T );
     void traverse();
 
@@ -46,7 +48,7 @@ private:
 //IMPLEMENTATION
 
 template<class T>
-int DoubleLinkedList<T>::Len() { return len; }
+size_t DoubleLinkedList<T>::Len() { return len; }
 
 template<class T>
 bool DoubleLinkedList<T>::isEmpty() { return len == 0; }

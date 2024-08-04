@@ -10,7 +10,7 @@ public:
 	std::vector<int> insertion(std::vector<int>);
 	std::vector<int> merge(std::vector<int>, std::vector<int> );
 	std::vector<int> mergeSort(std::vector<int>);
-	NodoDoble<Usuario>* getMiddle(DoubleLinkedList<Usuario>*, int);
+	NodoDoble<Usuario>* getMiddle(DoubleLinkedList<Usuario>*, size_t);
 	DoubleLinkedList<Usuario>* mergeList(DoubleLinkedList<Usuario>*, DoubleLinkedList<Usuario>*);
 	DoubleLinkedList<Usuario>* mergeSortList(DoubleLinkedList<Usuario>*);
 };

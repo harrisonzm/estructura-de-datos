@@ -37,8 +37,8 @@ std::vector<int> sort::bubble(std::vector<int> v)
 }
 std::vector<int> sort::merge(std::vector<int> v1,std::vector<int> v2)
 {	
-	int size1 = v1.size();
-	int size2 = v2.size();
+	size_t size1 = v1.size();
+	size_t size2 = v2.size();
 	std::vector<int> result;
 	int i = 0;
 	int j = 0;
@@ -65,7 +65,7 @@ std::vector<int> sort::merge(std::vector<int> v1,std::vector<int> v2)
 std::vector<int> sort::mergeSort(std::vector<int> list)
 {
 	if (list.size() > 1) {
-		int mid = list.size() / 2;
+		size_t mid = list.size() / 2;
 		std::vector<int> left(list.begin(), list.begin() + mid);
 		std::vector<int> right(list.begin() + mid, list.end());
 		left = mergeSort(left);
@@ -78,7 +78,7 @@ std::vector<int> sort::mergeSort(std::vector<int> list)
 	return list;
 }
 
-NodoDoble<Usuario>* sort::getMiddle(DoubleLinkedList<Usuario>* list, int n){
+NodoDoble<Usuario>* sort::getMiddle(DoubleLinkedList<Usuario>* list, size_t n){
 	NodoDoble<Usuario>* curr = list->First();
 	for (int i = 0; i < n / 2 - 1; i++) {
 		curr = curr->next;

@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\labs\lab8.cpp" />
+    <ClCompile Include="src\labs\lab7.cpp" />
+    <ClCompile Include="src\labs\lab6.cpp" />
     <ClCompile Include="src\classes for labs\Administrador.cpp" />
     <ClCompile Include="src\classes for labs\Empleado.cpp" />
     <ClCompile Include="src\classes for labs\Mensaje.cpp" />
@@ -31,6 +34,9 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\labs\headers\lab8.hpp" />
+    <ClInclude Include="src\labs\headers\lab7.hpp" />
+    <ClInclude Include="src\labs\headers\lab6.hpp" />
     <ClInclude Include="src\DSA\Graphs.hpp" />
     <ClInclude Include="src\DSA\HashTable.hpp" />
     <ClInclude Include="src\DSA\MinHeap.hpp" />

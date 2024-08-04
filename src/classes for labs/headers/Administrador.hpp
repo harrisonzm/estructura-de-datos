@@ -1,6 +1,6 @@
 #pragma once
 #include "../src/classes for labs\headers\Empleado.hpp"
-#include "../src/DSA\headers\DoubleLinkedList.hpp"
+#include "../src/DSA/DoubleLinkedList.hpp"
 #include "../src/classes for labs\headers\Usuario.hpp"
 #include <string>
 class Administrador : public Empleado
