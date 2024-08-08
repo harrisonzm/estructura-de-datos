@@ -1,7 +1,7 @@
-#include "../src/DSA/DoubleLinkedList.hpp"
-#include "../src/DSA/SingleLinkedList.hpp"
-#include "../src/classes for labs/headers/Usuario.hpp"
-#include "../src/labs/headers/lab4.hpp"
+#include "DSA/DoubleLinkedList.hpp"
+#include "DSA/SingleLinkedList.hpp"
+#include "classes for labs/headers/Usuario.hpp"
+#include "labs/headers/lab4.hpp"
 #include<format>
 #include<iostream>
 #include<string>

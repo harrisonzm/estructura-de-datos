@@ -1,4 +1,9 @@
-#include "../src/classes for labs/headers/Empleado.hpp"
+#include "classes for labs/headers/Empleado.hpp"
+#include "classes for labs/headers/Empleado.hpp"
+#include "DSA/DoubleLinkedList.hpp"
+#include "classes for labs/headers/Mensaje.hpp"
+#include "classes for labs/headers/Usuario.hpp"
+#include <string>
 
 Mensaje Empleado::buscar_mensaje(int id, std::string titulo, std::string fecha, std::string hora)
 {

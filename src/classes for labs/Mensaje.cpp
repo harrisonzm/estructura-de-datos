@@ -1,4 +1,4 @@
-#include "../src/classes for labs/headers/Mensaje.hpp"
+#include "classes for labs/headers/Mensaje.hpp"
 #include <iostream>
 #include <string>
 

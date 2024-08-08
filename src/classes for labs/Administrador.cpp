@@ -1,8 +1,8 @@
-#include "../src/classes for labs/headers/Administrador.hpp"
-#include "../src/classes for labs/headers/Empleado.hpp"
-#include "../src/classes for labs/headers/Usuario.hpp"
-#include "../src/classes for labs/headers/Mensaje.hpp"
-#include "../src/DSA/DoubleLinkedList.hpp"
+#include "classes for labs/headers/Administrador.hpp"
+#include "classes for labs/headers/Empleado.hpp"
+#include "classes for labs/headers/Usuario.hpp"
+#include "classes for labs/headers/Mensaje.hpp"
+#include "DSA/DoubleLinkedList.hpp"
 #include <string>
 
 bool Administrador::eliminar_usuario(int  id){

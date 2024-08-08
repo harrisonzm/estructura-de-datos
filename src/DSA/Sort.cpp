@@ -1,4 +1,4 @@
-#include "../src/DSA/Sort.hpp"
+#include "DSA/Sort.hpp"
 #include <vector>
 
 std::vector<int> sort::insertion(std::vector<int> v)

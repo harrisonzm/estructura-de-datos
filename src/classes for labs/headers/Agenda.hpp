@@ -1,5 +1,5 @@
 #pragma once
-#include "../src/classes for labs/headers/Usuario.hpp"
+#include "classes for labs/headers/Usuario.hpp"
 #include <cstddef> 
 #include <fstream>
 #include <iostream>

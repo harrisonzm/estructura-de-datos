@@ -1,6 +1,6 @@
 #pragma once
-#include "../src/DSA/DoubleLinkedList.hpp"
-#include "../src/classes for labs/headers/Usuario.hpp"
+#include "DSA/DoubleLinkedList.hpp"
+#include "classes for labs/headers/Usuario.hpp"
 #include <vector>
 
 class sort

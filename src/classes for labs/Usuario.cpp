@@ -1,4 +1,4 @@
-#include "../src/classes for labs/headers/Usuario.hpp"
+#include "classes for labs/headers/Usuario.hpp"
 #include <iostream>
 #include <cstddef>
 #include <format>

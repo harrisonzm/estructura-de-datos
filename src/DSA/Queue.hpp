@@ -1,16 +1,23 @@
 #pragma once
 #include <exception>
-#include "../src/DSA/SingleLinkedList.hpp"
+#include "DSA/SingleLinkedList.hpp"
 
 template<typename T>
 class Queue 
 {
 public:
 
-    bool isEmpty();
 
-    void queue(T value);
-    T& dequeue();
+    //STATE
+    bool isEmpty() noexcept;
+    T* peek() noexcept;
+
+
+    //MODIFIERS
+    void enqueue(const T value) noexcept;
+    T* dequeue() noexcept;
+
+
     
     Queue();
     ~Queue();
@@ -23,24 +30,24 @@ private:
 //IMPLEMENTATION
 
 template<typename T>
-bool Queue<T>::isEmpty()
+bool Queue<T>::isEmpty() noexcept
 {
     return storage->isEmpty();
 
 }
 
 template<typename T>
-void Queue<T>::queue(T value)
+void Queue<T>::enqueue(const T value) noexcept
 {
     storage->addFirst(T);
 }
 
 template<typename T>
-T& Queue<T>::dequeue()
+T* Queue<T>::dequeue() noexcept
 {
     if (isEmpty()) {
 
-        return T();
+        return nullptr;
 
     }
     else {
@@ -52,7 +59,7 @@ T& Queue<T>::dequeue()
 template<typename T>
 Queue<T>::Queue()
 {
-
+    storage = new SingleLinkedList<T>();
 }
 
 template<typename T>

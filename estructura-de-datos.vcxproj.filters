@@ -34,10 +34,11 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\DSA\binaryTree.hpp" />
+    <ClCompile Include="src\DSA\BinaryTree.hpp" />
     <ClCompile Include="src\labs\lab6.cpp" />
     <ClCompile Include="src\labs\lab7.cpp" />
     <ClCompile Include="src\labs\lab8.cpp" />
+    <ClCompile Include="src\labs\example.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes for labs\headers\Administrador.hpp">
@@ -77,5 +78,7 @@
     <ClInclude Include="src\labs\headers\lab6.hpp" />
     <ClInclude Include="src\labs\headers\lab7.hpp" />
     <ClInclude Include="src\labs\headers\lab8.hpp" />
+    <ClInclude Include="src\DSA\Tree.hpp" />
+    <ClInclude Include="src\DSA\PriorityQueue.hpp" />
   </ItemGroup>
 </Project>

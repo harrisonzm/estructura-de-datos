@@ -1,5 +1,5 @@
 #pragma once
-#include "../DSA/SingleLinkedList.hpp"
+#include "DSA/SingleLinkedList.hpp"
 
 template<typename T>
 class Stack 

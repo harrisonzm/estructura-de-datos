@@ -19,7 +19,7 @@ public:
 	T* buildMinHeap(const T* array);
 	void heapSort(const T* array);
 
-	minHeap(size_t capacity);
+	minHeap();
 	~minHeap();
 
 private:
@@ -141,11 +141,8 @@ T* minHeap<T>::minimum()
 
 
 template<class T>
-minHeap<T>::minHeap(size_t capacity)
-{
-	size = capacity;
-	array = new T[size];
-}
+minHeap<T>::minHeap()
+{}
 
 template<class T>
 minHeap<T>::~minHeap() {

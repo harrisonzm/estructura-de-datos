@@ -1,9 +1,9 @@
+#include "classes for labs/headers/Usuario.hpp"
+#include "classes for labs/headers/Agenda.hpp"
 #include <cstddef> 
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "../src/classes for labs/headers/Usuario.hpp"
-#include "../src/classes for labs/headers/Agenda.hpp"
 
 
 Agenda::Agenda(int size) 

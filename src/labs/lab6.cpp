@@ -1,1 +1,1 @@
-#include "lab6.hpp"
+#include "labs/headers/lab6.hpp"
