@@ -10,12 +10,12 @@ public:
 
     //STATE
     bool isEmpty() noexcept;
-    T* peek() noexcept;
+    NodoSimple<T>* peek() noexcept;
 
 
     //MODIFIERS
-    void enqueue(const T value) noexcept;
-    T* dequeue() noexcept;
+    void enqueue( T value) noexcept;
+    T dequeue() noexcept;
 
 
     
@@ -35,19 +35,24 @@ bool Queue<T>::isEmpty() noexcept
     return storage->isEmpty();
 
 }
-
-template<typename T>
-void Queue<T>::enqueue(const T value) noexcept
+template<class T>
+NodoSimple<T>* Queue<T>::peek() noexcept
 {
-    storage->addFirst(T);
+    return  storage->Last();
 }
 
 template<typename T>
-T* Queue<T>::dequeue() noexcept
+void Queue<T>::enqueue( T value) noexcept
+{
+    storage->addFirst(value);
+}
+
+template<typename T>
+T Queue<T>::dequeue() noexcept
 {
     if (isEmpty()) {
 
-        return nullptr;
+        return *(new T());
 
     }
     else {

@@ -6,7 +6,7 @@
 #include<iostream>
 #include<string>
 
-void printUsers(SingleLinkedList<Usuario> L) {
+void lab4::printUsers(SingleLinkedList<Usuario> L) {
     NodoSimple<Usuario>* curr1 = L.First();
     int count = 1;
     while (curr1->next != nullptr) {
@@ -17,7 +17,7 @@ void printUsers(SingleLinkedList<Usuario> L) {
     std::cout << curr1->value.getNombre()<< std::format("%d",count) << "\n";
 }
 
-void printUsers(DoubleLinkedList<Usuario> L) {
+void lab4::printUsers(DoubleLinkedList<Usuario> L) {
     NodoDoble<Usuario>* curr2 = L.First();
     int count = 1;
     while (curr2->next != nullptr) {
@@ -30,7 +30,7 @@ void printUsers(DoubleLinkedList<Usuario> L) {
 
 
 
-void puntoA() {
+void lab4::puntoA() {
 
 
     // single linked list
@@ -74,7 +74,7 @@ void puntoA() {
 
 }
 
-void puntoB() {
+void lab4::puntoB() {
 
     Fecha* fecha1 = new Fecha(1, 1, 1);
     Direccion* dir1 = new Direccion("1", "1", "1", "1", "1", "1");

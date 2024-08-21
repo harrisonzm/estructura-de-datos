@@ -6,16 +6,11 @@
 
 class Fecha
 {
-    private:
-
-        int dd = 0;
-        int mm = 0;
-        int aa = 0;
 
     public:
-        Fecha(void);
+        Fecha();
         Fecha(Fecha& f);
-        Fecha(int dd = 0, int mm = 0, int aa = 0);
+        Fecha(int dd , int mm , int aa );
         void setDia(int d);
         void setMes(int m);
         void setA(int a);
@@ -27,22 +22,19 @@ class Fecha
         std::string toString();
 
         std::ostream& operator<< (std::ostream& COUT);
+
+    private:
+
+        int dd = 0;
+        int mm = 0;
+        int aa = 0;
     };
 
 class Direccion {
-    private:
-
-        std::string calle = "";
-        std::string nomenclatura = "";
-        std::string barrio = "";
-        std::string ciudad = "";
-        std::string edifico = "";
-        std::string apto = "";
-
     public:
-        Direccion(void);
+        Direccion();
         Direccion(Direccion& d);
-        Direccion(std::string calle = "Na", std::string nomencl = "Na", std::string barrio = "Na", std::string ciudad = "Na", std::string edificio = "Na", std::string apto = "Na");
+        Direccion(std::string calle , std::string nomencl , std::string barrio , std::string ciudad , std::string edificio , std::string apto );
 
 
         void setCalle(std::string c);
@@ -61,9 +53,48 @@ class Direccion {
 
         std::string toString();
         std::ostream& operator<< (std::ostream& COUT);
+    
+private:
+
+        std::string calle = "";
+        std::string nomenclatura = "";
+        std::string barrio = "";
+        std::string ciudad = "";
+        std::string edifico = "";
+        std::string apto = "";
+
 };
 
 class Usuario {
+
+    public:
+
+        Usuario(void);
+        Usuario(Usuario& u);
+        Usuario(std::string name , int ID , Fecha* fecha , std::string ciudad , int telefono , std::string correo , Direccion* direccion );
+        ~Usuario();
+
+
+        void setNomebre(std::string n);
+        void setId(int id);
+        void setFechaNacimiento(Fecha* fecha);
+        void setCiudadNacimiento(std::string ciudad);
+        void setTel(int tel);
+        void setemail(std::string email);
+        void setDir(Direccion* direccion);
+
+        std::string getNombre();
+        int getId();
+        Fecha* getFechaNacimiento();
+        std::string getCiudadNacimiento();
+        int getTel();
+        std::string getEmail();
+        Direccion* getDir();
+
+        std::string toString();
+        std::ostream& operator<< (std::ostream& COUT);
+        bool operator!=(Usuario& u);
+
     private:
 
         std::string nombre = "";
@@ -73,33 +104,4 @@ class Usuario {
         int tel = 0;
         std::string email = "";
         Direccion* dir = nullptr;
-
-    public:
-
-        Usuario(void);
-        Usuario(Usuario& u);
-        Usuario(std::string name , int ID = 0, Fecha* fecha = nullptr, std::string ciudad = "Na", int telefono = 0, std::string correo = "Na", Direccion* direccion = nullptr);
-
-
-        void setNomebre(std::string n);
-        void setId(int id);
-        void setFecha_nacimiento(Fecha* fecha);
-        void setCiudad_nacimiento(std::string ciudad);
-        void setTel(int tel);
-        void setemail(std::string email);
-        void setDir(Direccion* direccion);
-
-        std::string getNombre();
-        int getId();
-        Fecha* getFecha_nacimiento();
-        std::string getCiudad_nacimiento();
-        int getTel();
-        std::string getEmail();
-        Direccion* getDir();
-
-        std::string toString();
-        std::ostream& operator<< (std::ostream& COUT);
-        bool operator!=(Usuario& u);
-        ~Usuario();
-
 };

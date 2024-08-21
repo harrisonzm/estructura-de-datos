@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes for labs\Bandeja.cpp" />
     <ClCompile Include="src\labs\example.cpp" />
     <ClCompile Include="src\labs\lab8.cpp" />
     <ClCompile Include="src\labs\lab7.cpp" />
@@ -33,8 +34,10 @@
     <ClCompile Include="src\labs\lab4.cpp" />
     <ClCompile Include="src\labs\lab5.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\classes for labs\turnoUsuario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes for labs\headers\Bandeja.hpp" />
     <ClInclude Include="src\DSA\PriorityQueue.hpp" />
     <ClInclude Include="src\DSA\Tree.hpp" />
     <ClInclude Include="src\labs\headers\lab8.hpp" />
@@ -56,6 +59,12 @@
     <ClInclude Include="src\DSA\Sort.hpp" />
     <ClInclude Include="src\DSA\Stack.hpp" />
     <ClInclude Include="src\labs\headers\lab4.hpp" />
+    <ClInclude Include="src\labs\headers\lab5.hpp" />
+    <ClInclude Include="src\classes for labs\headers\turnoUsuario.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\files\Empleados.txt" />
+    <Text Include="src\files\Password.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

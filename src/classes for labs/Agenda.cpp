@@ -85,7 +85,7 @@ void Agenda::import()
     {
 
         getline(archivo, linea,',');
-        std::string info[12];
+        std::string info[14];
         std::string infoPiece = "";
         int count = 0;
         for (int i = 0; i < linea.size(); i++){
@@ -99,7 +99,7 @@ void Agenda::import()
 			}
             
         }
-        Usuario* user = new Usuario(info[0], std::stoi(info[1]), new Fecha(std::stoi(info[2]), std::stoi(info[3]), std::stoi(info[4])), info[5], std::stoi(info[6]), info[7], new Direccion(info[8], info[9], info[10], info[11]));
+        Usuario* user = new Usuario(info[0], std::stoi(info[1]), new Fecha(std::stoi(info[2]), std::stoi(info[3]), std::stoi(info[4])), info[5], std::stoi(info[6]), info[7], new Direccion(info[8], info[9], info[10], info[11], info[12],info[13]));
         registro[no_registro] = *user;
         no_registro++;
 

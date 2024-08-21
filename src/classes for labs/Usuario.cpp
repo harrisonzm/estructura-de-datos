@@ -3,14 +3,16 @@
 #include <cstddef>
 #include <format>
 
+Fecha::Fecha()
+{
 
-Fecha::Fecha(void) {}
+}
 Fecha::Fecha(Fecha& f) {
     aa = f.aa;
     dd = f.dd;
     mm = f.mm;
 }
-Fecha::Fecha(int dd, int mm, int aa) {
+Fecha::Fecha(int dd = 0, int mm = 0, int aa = 0) {
     this->dd = dd;
     this->mm = mm;
     this->aa = aa;
@@ -40,9 +42,10 @@ std::ostream& Fecha::operator <<  (std::ostream& COUT) {
     return COUT;
 }
 
+Direccion::Direccion()
+{
 
-
-Direccion::Direccion(void) {}
+}
 Direccion::Direccion(Direccion& d) {
     this->calle = d.calle;
     this->nomenclatura = d.nomenclatura;
@@ -52,7 +55,7 @@ Direccion::Direccion(Direccion& d) {
     this->apto = d.apto;
 
 }
-Direccion::Direccion(std::string calle , std::string nomencl , std::string barrio , std::string ciudad , std::string edificio , std::string apto ) {
+Direccion::Direccion(std::string calle = "Na", std::string nomencl = "Na", std::string barrio = "Na", std::string ciudad = "Na", std::string edificio = "Na", std::string apto = "Na") {
     this->calle        = calle;
     this->nomenclatura = nomencl;
     this->barrio       = barrio;
@@ -85,9 +88,10 @@ std::ostream& Direccion::operator<< (std::ostream& COUT) {
     return COUT;
 }
 
+Usuario::Usuario()
+{
 
-
-Usuario::Usuario(void) {}
+}
 Usuario::Usuario(Usuario& u) {
     nombre = u.nombre;
     id = u.id;
@@ -98,7 +102,8 @@ Usuario::Usuario(Usuario& u) {
     dir = new Direccion(*u.dir);
 
 }
-Usuario::Usuario(std::string name , int ID , Fecha* fecha , std::string ciudad , int telefono , std::string correo , Direccion* direccion ) {
+
+Usuario::Usuario(std::string name, int ID = 0, Fecha* fecha = nullptr, std::string ciudad = "Na", int telefono = 0, std::string correo = "Na", Direccion* direccion = nullptr) {
 nombre            = name;
 id                = ID;
 fecha_nacimiento  = fecha;
@@ -108,19 +113,23 @@ email             = correo;
 dir               = direccion;
 }
 
+Usuario::~Usuario() {
+    delete fecha_nacimiento;
+    delete dir;
+}
 
 void Usuario::setNomebre(std::string n) { this->nombre = n; }
 void Usuario::setId(int id) { this->id = id; }
-void Usuario::setFecha_nacimiento(Fecha* fecha) { this->fecha_nacimiento = fecha; }
-void Usuario::setCiudad_nacimiento(std::string ciudad) { this->ciudad_nacimiento = ciudad; }
+void Usuario::setFechaNacimiento(Fecha* fecha) { this->fecha_nacimiento = fecha; }
+void Usuario::setCiudadNacimiento(std::string ciudad) { this->ciudad_nacimiento = ciudad; }
 void Usuario::setTel(int tel) { this->tel = tel; }
 void Usuario::setemail(std::string email) { this->email = email; }
 void Usuario::setDir(Direccion* direccion) { this->dir = direccion; }
 
 std::string Usuario::getNombre() { return this->nombre; }
 int Usuario::getId() { return this->id; }
-Fecha* Usuario::getFecha_nacimiento() { return this->fecha_nacimiento; }
-std::string Usuario::getCiudad_nacimiento() { return this->ciudad_nacimiento; }
+Fecha* Usuario::getFechaNacimiento() { return this->fecha_nacimiento; }
+std::string Usuario::getCiudadNacimiento() { return this->ciudad_nacimiento; }
 int Usuario::getTel() { return this->tel; }
 std::string Usuario::getEmail() { return this->email; }
 Direccion* Usuario::getDir() { return this->dir; }
@@ -137,9 +146,5 @@ bool Usuario::operator!= (Usuario& u) {
 	return &u != this;
 }
 
-Usuario::~Usuario() {
-    delete fecha_nacimiento;
-    delete dir;
-}
 
 

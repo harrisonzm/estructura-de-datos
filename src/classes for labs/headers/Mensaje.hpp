@@ -2,32 +2,38 @@
 #include <string>
 #include <cstddef>
 class Mensaje
-{public:
-
-
-	int get_id();
-	int get_id_remitente();
-	int get_id_destinatario();
-	std::string get_contenido();
-	std::string get_fecha();
-	std::string get_hora();
-	std::string get_titulo();
-
-	void set_id(int);
-	void set_contenido(std::string);
-	void set_fecha(std::string);
-	void set_hora(std::string);
-	void set_id_remitente(int);
-	void set_id_destinatario(int);
+{
+public:
 
 	Mensaje();
-	Mensaje(int, int, int,std::string, std::string, std::string, std::string);
+	Mensaje(int id, int idRemitente, int idDestino,std::string tiutlo, std::string contenido, std::string fecha, std::string hora);
+
+	int getId();
+	int getIdRemitente();
+	int getIdDestinatario();
+	std::string getContenido();
+	std::string getFecha();
+	std::string getHora();
+	std::string getTitulo();
+
+	void setId(int);
+	void setContenido(std::string);
+	void setFecha(std::string);
+	void setHora(std::string);
+	void setIdRemitente(int);
+	void setIdDestinatario(int);
+
+	std::string toString();
+	void toShow();
+	std::ostream& operator<<(std::ostream OUT);
+
+
 
 
 private:
 	int id = NULL;
-	int id_remitente = NULL;
-	int id_destinatario = NULL;
+	int idRemitente = NULL;
+	int idDestinatario = NULL;
 	std::string titulo = "";
 	std::string contenido = "";
 	std::string fecha = "";

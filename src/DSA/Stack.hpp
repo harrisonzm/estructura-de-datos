@@ -7,10 +7,10 @@ class Stack
 public:
     bool isEmpty();
 
-    T& pop();
-    void push(T& elemnt);
+    T pop();
+    void push(T elemnt);
 
-    T& peek();
+    NodoSimple<T>* peek() ;
 
     ~Stack();
 
@@ -22,21 +22,21 @@ private:
 //IMPLEMENTATION
 
 template<class T>
-T& Stack<T>::pop()
+T Stack<T>::pop()
 {
-    return storage.removeFirst;
+    return storage.removeFirst();
 
 }
 
 template<class T>
-void Stack<T>::push(T& elemnt)
+void Stack<T>::push(T elemnt)
 {
     storage.addFirst(elemnt);
 
 }
 
 template<class T>
-T& Stack<T>::peek()
+NodoSimple<T>* Stack<T>::peek()
 {
     return storage.First();
 }
@@ -50,5 +50,5 @@ bool Stack<T>::isEmpty()
 template<class T>
 Stack<T>::~Stack()
 {
-    delete storage;
+
 }

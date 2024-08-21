@@ -7,19 +7,22 @@ class Administrador : public Empleado
 {	
 	public:
 		
-		static void toFile();
-		static void fromFile();
-
-		bool eliminar_usuario(int);
-		bool agregar_usuario(std::string, int, std::string, std::string, int, std::string, std::string, std::string, std::string, std::string, std::string, std::string);
-		bool modificar_contrasena(std::string, std::string);
-
+		void toFile();
+		void fromFile();
+		
+		Administrador(void);
+		Administrador(std::string passw , std::string name , int ID , Fecha* fecha , std::string ciudadN , int tel , std::string email , Direccion* dir );
 		~Administrador();
 
-	private:
+		bool eliminarEmpleado(int);
+		bool agregarEmpleado(std::string pass, std::string name, int ID, std::string dd, std::string mm, std::string aa, std::string ciudadN, int tel, std::string email, std::string calle, std::string nomenclatura, std::string barrio, std::string ciudad, std::string edificio, std::string apto);
+		bool modificarContraseña(std::string pass, int id);
 
-		DoubleLinkedList<Empleado>* empleados = nullptr;
-		DoubleLinkedList<Usuario>* usuarios = nullptr;
-		void sort_users();
+
+	private:
+		std::string contraseña = "";
+		char employT = ' ';
+		DoubleLinkedList<Empleado> empleados ;
+		void sortEmpleados();
 };
 

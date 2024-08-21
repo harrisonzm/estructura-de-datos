@@ -107,8 +107,9 @@ int BinaryTree<T>::height(const BinaryNode<T>* const node) noexcept
 	}
 	else
 	{	
-
-		const int heghtChildren = fmax(height(left(node), height(right(node)));
+		const int heightL = height(left(node));
+		const int heightR = height(right(node));
+		const int heghtChildren = heightL * (heightL>heightR) + heightR * (heightR > heightL);
 		return 1 + heghtChildren;
 	}
 }
@@ -116,7 +117,7 @@ int BinaryTree<T>::height(const BinaryNode<T>* const node) noexcept
 template<class T>
 BinaryNode<T>* BinaryTree<T>::left(const BinaryNode<T>* const node) noexcept
 {
-	return node->left
+	return node->left;
 }
 
 template<class T>
@@ -194,6 +195,6 @@ T& BinaryTree<T>::remove(const BinaryNode<T>* node) noexcept
 	}
 	node->left = nullptr, node->right = nullptr;
 	delete node;
-	size--:
+	size--;
 
 }

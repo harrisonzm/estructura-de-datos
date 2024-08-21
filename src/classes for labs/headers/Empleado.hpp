@@ -9,15 +9,26 @@ class Empleado : public Usuario
 	public:
 		void ver_mensaje(int, std::string, std::string, std::string);
 		bool eliminar_mensaje(std::string, std::string, std::string);
-		bool enviar_mensaje(std::string);
-		
-		Empleado();
-		Empleado(std::string passw);
-		~Empleado();
+		void showMessages();
+		bool enviar_mensaje(std::string titulo, std::string contenido, NodoDoble<Empleado> destino, std::string fecha);
 
-	private:
+		void setContraseña(std::string pass);
+
+		bool operator<=(Empleado& member2);
+		bool operator>=(Empleado& member2);
+		bool operator<(Empleado& member2);
+		bool operator>(Empleado& member2);
+		
+		std::ostream& operator<<(std::ostream& OUT);
+		std::string toString();
+
+		Empleado(void);
+		Empleado(std::string pass, std::string name , int ID , Fecha* fecha , std::string ciudadN , int telefono , std::string correo , Direccion* direccion );
+		~Empleado();
+private:
 		std::string contraseña = "";
-		DoubleLinkedList<Mensaje> mensajes ;
+		char employT = ' ';
+		DoubleLinkedList<Mensaje> mensajes = nullptr;
 		Mensaje buscar_mensaje(int id,std::string, std::string, std::string);
 };
 

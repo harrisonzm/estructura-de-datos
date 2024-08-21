@@ -39,6 +39,8 @@
     <ClCompile Include="src\labs\lab7.cpp" />
     <ClCompile Include="src\labs\lab8.cpp" />
     <ClCompile Include="src\labs\example.cpp" />
+    <ClCompile Include="src\classes for labs\turnoUsuario.cpp" />
+    <ClCompile Include="src\classes for labs\Bandeja.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes for labs\headers\Administrador.hpp">
@@ -80,5 +82,12 @@
     <ClInclude Include="src\labs\headers\lab8.hpp" />
     <ClInclude Include="src\DSA\Tree.hpp" />
     <ClInclude Include="src\DSA\PriorityQueue.hpp" />
+    <ClInclude Include="src\labs\headers\lab5.hpp" />
+    <ClInclude Include="src\classes for labs\headers\turnoUsuario.hpp" />
+    <ClInclude Include="src\classes for labs\headers\Bandeja.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\files\Empleados.txt" />
+    <Text Include="src\files\Password.txt" />
   </ItemGroup>
 </Project>

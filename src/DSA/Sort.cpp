@@ -1,6 +1,6 @@
 #include "DSA/Sort.hpp"
 #include <vector>
-
+#include "classes for labs/headers/Empleado.hpp"
 std::vector<int> sort::insertion(std::vector<int> v)
 {
 	size_t n = v.size();
@@ -60,7 +60,7 @@ std::vector<int> sort::merge(std::vector<int> v1,std::vector<int> v2)
 	return result;
 }
 
-
+ 
 
 std::vector<int> sort::mergeSort(std::vector<int> list)
 {
@@ -78,19 +78,19 @@ std::vector<int> sort::mergeSort(std::vector<int> list)
 	return list;
 }
 
-NodoDoble<Usuario>* sort::getMiddle(DoubleLinkedList<Usuario>* list, size_t n){
-	NodoDoble<Usuario>* curr = list->First();
+NodoDoble<Empleado>* sort::getMiddle(DoubleLinkedList<Empleado>* list, size_t n) {
+	NodoDoble<Empleado>* curr = list->First();
 	for (int i = 0; i < n / 2 - 1; i++) {
 		curr = curr->next;
 	}
 	return curr;
 }
 
-DoubleLinkedList<Usuario>* sort::mergeList(DoubleLinkedList<Usuario>* left, DoubleLinkedList<Usuario>* right)
+DoubleLinkedList<Empleado>* sort::mergeList(DoubleLinkedList<Empleado>* left, DoubleLinkedList<Empleado>* right)
 {
-	DoubleLinkedList<Usuario>* result = new DoubleLinkedList<Usuario>();
-	NodoDoble<Usuario>* l = left->First();
-	NodoDoble<Usuario>* r = right->First();
+	DoubleLinkedList<Empleado>* result = new DoubleLinkedList<Empleado>();
+	NodoDoble<Empleado>* l = left->First();
+	NodoDoble<Empleado>* r = right->First();
 	while (l != nullptr && r != nullptr) {
 		if (l->value.getId() < r->value.getId()) {
 			result->addLast(l->value);
@@ -114,16 +114,16 @@ DoubleLinkedList<Usuario>* sort::mergeList(DoubleLinkedList<Usuario>* left, Doub
 }
 
 
-DoubleLinkedList<Usuario>* sort::mergeSortList(DoubleLinkedList<Usuario>* list)
+DoubleLinkedList<Empleado>* sort::mergeSortList(DoubleLinkedList<Empleado>* list)
 {
 	if (list->First()->next == nullptr) {
 		return list;
 	}
-	NodoDoble<Usuario>* mid = getMiddle(list, list->Len());
-	DoubleLinkedList<Usuario>* left = new DoubleLinkedList<Usuario>();
+	NodoDoble<Empleado>* mid = getMiddle(list, list->Len());
+	DoubleLinkedList<Empleado>* left = new DoubleLinkedList<Empleado>();
 	left->setFirst( list->First());
 	left->setLast(mid);
-	DoubleLinkedList<Usuario>* right = new DoubleLinkedList<Usuario>();
+	DoubleLinkedList<Empleado>* right = new DoubleLinkedList<Empleado>();
 	right->setFirst(left->Last()->next);
 	left->Last()->next = nullptr;
 	right->setLast(list->Last());
