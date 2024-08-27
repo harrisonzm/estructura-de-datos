@@ -78,58 +78,83 @@ std::vector<int> sort::mergeSort(std::vector<int> list)
 	return list;
 }
 
-NodoDoble<Empleado>* sort::getMiddle(DoubleLinkedList<Empleado>* list, size_t n) {
-	NodoDoble<Empleado>* curr = list->First();
+template<typename T>
+NodoDoble<T>* getMiddle(DoubleLinkedList<T>* list, size_t n) {
+	NodoDoble<T>* curr = list->First();
 	for (int i = 0; i < n / 2 - 1; i++) {
 		curr = curr->next;
 	}
 	return curr;
 }
 
-DoubleLinkedList<Empleado>* sort::mergeList(DoubleLinkedList<Empleado>* left, DoubleLinkedList<Empleado>* right)
-{
-	DoubleLinkedList<Empleado>* result = new DoubleLinkedList<Empleado>();
-	NodoDoble<Empleado>* l = left->First();
-	NodoDoble<Empleado>* r = right->First();
+template<typename T>
+DoubleLinkedList<T>* mergeList(DoubleLinkedList<T>* left, DoubleLinkedList<T>* right) {
+	DoubleLinkedList<T>* result = new DoubleLinkedList<T>();
+	NodoDoble<T>* l = left->First();
+	NodoDoble<T>* r = right->First();
 	while (l != nullptr && r != nullptr) {
 		if (l->value.getId() < r->value.getId()) {
-			result->addLast(l->value);
+			result->addLast(&(l->value));
 			l = l->next;
 		}
 		else {
-			result->addLast(r->value);
+			result->addLast(&(r->value));
 			r = r->next;
 		}
 	}
 	while (l != nullptr) {
-		result->addLast(l->value);
+		result->addLast(&(l->value));
 		l = l->next;
 	}
 	while (r != nullptr) {
-		result->addLast(r->value);
+		result->addLast(&(r->value));
 		r = r->next;
 	}
 	return result;
-
 }
 
-
-DoubleLinkedList<Empleado>* sort::mergeSortList(DoubleLinkedList<Empleado>* list)
-{
-	if (list->First()->next == nullptr) {
+template<typename T>
+DoubleLinkedList<T>* mergeSortList(DoubleLinkedList<T>* list) {
+	if (list->First() == nullptr || list->First()->next == nullptr) {
 		return list;
 	}
-	NodoDoble<Empleado>* mid = getMiddle(list, list->Len());
-	DoubleLinkedList<Empleado>* left = new DoubleLinkedList<Empleado>();
-	left->setFirst( list->First());
-	left->setLast(mid);
-	DoubleLinkedList<Empleado>* right = new DoubleLinkedList<Empleado>();
-	right->setFirst(left->Last()->next);
-	left->Last()->next = nullptr;
-	right->setLast(list->Last());
-	mid->next = nullptr;
+	size_t size = list->Len();
+	NodoDoble<T>* mid = getMiddle(list, size);
 
-	left =  mergeSortList(left);
+	DoubleLinkedList<T>* left = new DoubleLinkedList<T>();
+	left->setFirst(list->First());
+	left->setLast(mid);
+	left->setLen(size / 2);
+
+	DoubleLinkedList<T>* right = new DoubleLinkedList<T>();
+	right->setFirst(mid->next);
+	if (mid->next != nullptr) mid->next->prev = nullptr;
+	mid->next = nullptr;
+	right->setLast(list->Last());
+	right->setLen(size - size / 2);
+
+	left = mergeSortList(left);
 	right = mergeSortList(right);
 	return mergeList(left, right);
+}
+
+void sort::bubbleSortList(DoubleLinkedList<Empleado>* list)
+{
+	for (int i = 1; i < list->Len(); i++)
+	{
+		NodoDoble<Empleado>* curr = list->First();
+		NodoDoble<Empleado>* finder = curr;
+		NodoDoble<Empleado>* minor = curr;
+		while (finder->next != nullptr)
+		{
+			if (finder->value <= minor->value)
+			{
+				minor = finder;
+			}
+		}
+		NodoDoble<Empleado>* temp1 = curr;
+		NodoDoble<Empleado>* temp2 = curr;
+		
+		
+	}
 }

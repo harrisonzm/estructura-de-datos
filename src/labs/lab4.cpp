@@ -6,26 +6,26 @@
 #include<iostream>
 #include<string>
 
-void lab4::printUsers(SingleLinkedList<Usuario> L) {
+void lab4::printUsers( SingleLinkedList<Usuario>& L) {
     NodoSimple<Usuario>* curr1 = L.First();
     int count = 1;
     while (curr1->next != nullptr) {
-        std::cout << curr1->value.getNombre() << std::format("%d",count) << ",";
+        std::cout << count << curr1->value.getNombre()  << ",";
         curr1 = curr1->next;
         count++;
     }
-    std::cout << curr1->value.getNombre()<< std::format("%d",count) << "\n";
+    std::cout << count << curr1->value.getNombre() << "\n";
 }
 
-void lab4::printUsers(DoubleLinkedList<Usuario> L) {
+void lab4::printUsers( DoubleLinkedList<Usuario>& L) {
     NodoDoble<Usuario>* curr2 = L.First();
     int count = 1;
     while (curr2->next != nullptr) {
-        std::cout << curr2->value.getNombre() << std::format("%d", count) << ",";
+        std::cout << count << curr2->value.getNombre() << ",";
         curr2 = curr2->next;
         count++;
     }
-    std::cout << curr2->value.getNombre() << std::format("%d", count) << "\n";
+    std::cout << count << curr2->value.getNombre() << "\n";
 }
 
 
@@ -35,18 +35,21 @@ void lab4::puntoA() {
 
     // single linked list
     SingleLinkedList<int> simple;
-    int i = 1;
-    simple.addLast(i);
-    for (i = 2; i <= 20; i++) {
-        if (i % 2 == 0) simple.addLast(i);
+
+    for (int i = 1; i <= 20; i++) {
+        if (i == 1) simple.addLast(&i);
+        if (i % 2 == 0) simple.addLast(&i);
     }
 
     simple.traverse();
-    NodoSimple<int>* first = simple.find(1);
+    int Testnum = 1;
+    NodoSimple<int>* first = simple.find(&Testnum);
     simple.remove(first);
-    NodoSimple<int>* second = simple.find(10);
+    Testnum *= 10;
+    NodoSimple<int>* second = simple.find(&Testnum);
     simple.remove(second);
-    NodoSimple<int>* third = simple.find(20);
+    Testnum *= 2;
+    NodoSimple<int>* third = simple.find(&Testnum);
     simple.remove(third);
 
 
@@ -54,19 +57,21 @@ void lab4::puntoA() {
 
     // doubly linked list
     DoubleLinkedList<int> doble;
-    int j = 1;
-    for (j = 1; j <= 20; j++) {
-        if (j == 1) { doble.addLast(j); }
-        if (j % 2 == 0) { doble.addLast(j); }
+    
+    for (int j = 1; j <= 20; j++) {
+        if (j == 1) { doble.addLast(&j); }
+        if (j % 2 == 0) { doble.addLast(&j); }
     }
 
     doble.traverse();
-
-    struct NodoDoble<int>* fourth = doble.find(1);
+    int i = 1;
+    struct NodoDoble<int>* fourth = doble.  find(&i);
     doble.remove(fourth);
-    struct NodoDoble<int>* fifth = doble.find(10);
+    i *= 10;
+    struct NodoDoble<int>* fifth = doble.find(&i);
     doble.remove(fifth);
-    struct NodoDoble<int>* sixth = doble.find(20);
+    i *= 2;
+    struct NodoDoble<int>* sixth = doble.find(&i);
     doble.remove(sixth);
 
     doble.traverse();
@@ -101,37 +106,55 @@ void lab4::puntoB() {
     SingleLinkedList<Usuario> simple;
     DoubleLinkedList<Usuario> doble;
 
-    simple.addLast(*user1);
-    simple.addLast(*user2);
-    simple.addLast(*user3);
-    simple.addLast(*user4);
-    simple.addLast(*user5);
+    simple.addLast(user1);
+    simple.addLast(user2);
+    simple.addLast(user3);
+    simple.addLast(user4);
+    simple.addLast(user5);
 
     std::cout << "lista simple: ";
     printUsers(simple);
+    
 
-
-    doble.addLast(*user6);
-    doble.addLast(*user7);
-    doble.addLast(*user8);
-    doble.addLast(*user9);
-    doble.addLast(*user10);
+    doble.addLast(user6);
+    doble.addLast(user7);
+    doble.addLast(user8);
+    doble.addLast(user9);
+    doble.addLast(user10);
 
     std::cout << "lista doble: ";
     printUsers(doble);
 
 
     int dd, mm, aa;
-    std::cout << " ingrese dia mes y año";
-    std::cin >> dd >> mm >> aa;
-    std::string lista[] = { "calle", "nomenclatura", "barrio", "ciudad", "edificio" , "apto" };
+    std::cout << " ingrese dia: ";
+    std::cin >> dd;
+    std::cout << " ingrese mes: ";
+    std::cin >> mm;
+    std::cout << " ingrese ano: ";
+    std::cin >> aa;
     std::string di[6];
-    for (int i = 0; i < 6; i++) {
-        std::string inpt;
-        std::cout << " ingrese " + lista[i] + ": ";
-        std::getline(std::cin, inpt);
-        di[i] = inpt;
-    }
+    int count = 0;
+    std::string inpt;
+    getline(std::cin, inpt);
+    std::cout << "\ningrese calle:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
+    std::cout << "\ningrese nomenclatura:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
+    std::cout << "\ningrese barrio:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
+    std::cout << "\ningrese ciudad:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
+    std::cout << "\ningrese edificio:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
+    std::cout << "\ningrese apto:";
+    getline(std::cin, inpt);
+    di[count++] = inpt;
     std::string name1, name2, name3;
     std::cout << " ingrese nombre del primer usuario: ";
     std::cin >> name1;
@@ -139,27 +162,27 @@ void lab4::puntoB() {
     std::cin >> name2;
     std::cout << "ingrese nombre del ultimo usuario: ";
     std::cin >> name3;
-
+    
     Fecha* F1 = new Fecha(dd, mm, aa);
-    Fecha* F2 = F1;
-    Fecha* F3 = F1;
+    Fecha* F2 = new Fecha(*F1);
+    Fecha* F3 = new Fecha(*F1);
     Direccion* D1 = new Direccion(di[0], di[1], di[2], di[3], di[4], di[5]);
-    Direccion* D2 = D1;
-    Direccion* D3 = D1;
+    Direccion* D2 = new Direccion(*D1);
+    Direccion* D3 = new Direccion(*D1);
 
-    Usuario* U1 = new Usuario(name1, 0, F1, "Na", 0, "Na", D1);
-    Usuario* U2 = new Usuario(name2, 0, F2, "Na", 0, "Na", D2);
-    Usuario* U3 = U1;
-    Usuario* U4 = U2;
-    Usuario* U5 = new Usuario(name3, 0, F3, "Na", 0, "Na", D3);
+    Usuario* U1 = new Usuario(name1, 60, F1, "Na", 0, "Na", D1);
+    Usuario* U2 = new Usuario(name2, 70, F2, "Na", 0, "Na", D2);
+    Usuario* U3 = new Usuario(*U1);
+    Usuario* U4 = new Usuario(*U2);
+    Usuario* U5 = new Usuario(name3, 80, F3, "Na", 0, "Na", D3);
 
-    simple.addLast(*U1);
-    simple.addLast(*U2);
-    doble.addLast(*U3);
-    doble.addLast(*U4);
-     NodoDoble<Usuario>* found = doble.find(*U4);
+    simple.addLast(U1);
+    simple.addLast(U2);
+    doble.addLast(U3);
+    doble.addLast(U4);
+     NodoDoble<Usuario>* found = doble.find(U4);
     doble.addAfter(found,*U5);
     printUsers(doble);
-
+    
 
 }

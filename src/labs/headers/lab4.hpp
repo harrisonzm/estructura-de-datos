@@ -5,9 +5,9 @@
 
 namespace lab4
 {
-	void printUsers(SingleLinkedList<Usuario> L);
+	void printUsers( SingleLinkedList<Usuario>& L);
 
-	void printUsers(DoubleLinkedList<Usuario> L);
+	void printUsers( DoubleLinkedList<Usuario>& L);
 
 	void puntoA();
 

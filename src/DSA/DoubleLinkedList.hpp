@@ -14,6 +14,7 @@ class DoubleLinkedList {
 
 public:
     size_t Len();
+    void setLen(int n);
     bool isEmpty();
 
     struct NodoDoble<T>* First();
@@ -22,13 +23,13 @@ public:
     void setFirst(struct NodoDoble<T>*);
     void setLast(struct NodoDoble<T>*);
 
-    struct NodoDoble<T>* find(T );
+    struct NodoDoble<T>* find(T* );
     void traverse();
 
-    void addFirst(T );
-    void addLast(T );
-    void addBefore(struct NodoDoble<T>* , T );
-    void addAfter(struct NodoDoble<T>* , T );
+    void addFirst(T* );
+    void addLast(T* );
+    void addBefore(struct NodoDoble<T>* , T& );
+    void addAfter(struct NodoDoble<T>* , T& );
 
     T& removeFirst();
     T& removeLast();
@@ -49,12 +50,13 @@ private:
 
 template<class T>
 size_t DoubleLinkedList<T>::Len() { return len; }
-
+template<class T>
+void DoubleLinkedList<T>::setLen(int n) { len = n; }
 template<class T>
 bool DoubleLinkedList<T>::isEmpty() { return len == 0; }
 
 template<class T>
-NodoDoble<T>* DoubleLinkedList<T>::First() { return head; }
+ NodoDoble<T>* DoubleLinkedList<T>::First() { return head; }
 template<class T>
 void DoubleLinkedList<T>::setFirst(NodoDoble<T>* node) { head = node; }
 
@@ -65,10 +67,10 @@ template<class T>
 void DoubleLinkedList<T>::setLast(NodoDoble<T>* node) { tail = node; }
 
 template<class T>
-NodoDoble<T>* DoubleLinkedList<T>::find(T val) 
+NodoDoble<T>* DoubleLinkedList<T>::find(T* val) 
 {
     NodoDoble<T>* curr = head;
-    while ((curr != nullptr) && (curr->value != val))
+    while ((curr != nullptr) && (curr->value != *val))
     {
         curr = curr->next;
     }
@@ -76,39 +78,40 @@ NodoDoble<T>* DoubleLinkedList<T>::find(T val)
 };
 
 template<class T>
-void DoubleLinkedList<T>::addFirst(T objeto) {
+void DoubleLinkedList<T>::addFirst(T* objeto) {
     struct NodoDoble<T>* newNode = new struct NodoDoble<T>;
-    newNode->value = objeto;
+    newNode->value = *objeto;
     if (len == 0) {
-        head, tail = newNode;
-        len++;
+        tail = newNode;
     }
     else {
         newNode->next = head;
-        head = newNode;
-        len++;
+        
     }
+    head = newNode;
+    len++;
 }
 
 template<class T>
-void DoubleLinkedList<T>::addLast(T objeto) {
+void DoubleLinkedList<T>::addLast(T* objeto) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
-    newNode->value = objeto;
+    newNode->value = *objeto;
     if (len == 0) {
-        head = newNode, tail = newNode;
-        len++;
+        head = newNode;
+        
     }
     else {
         tail->next = newNode;
         newNode->prev = tail;
-        tail = newNode;
-        len++;
+        
     }
 
+    tail = newNode;
+    len++;
 }
 
 template<class T>
-void DoubleLinkedList<T>::addBefore( NodoDoble<T>* node, T val) {
+void DoubleLinkedList<T>::addBefore( NodoDoble<T>* node, T& val) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
     newNode->value = val;
     if (node == head) {
@@ -130,7 +133,7 @@ void DoubleLinkedList<T>::addBefore( NodoDoble<T>* node, T val) {
 }
 
 template<class T>
-void DoubleLinkedList<T>::addAfter(NodoDoble<T>* node, T val) {
+void DoubleLinkedList<T>::addAfter(NodoDoble<T>* node, T& val) {
     NodoDoble<T>* newNode = new NodoDoble<T>;
     newNode->value = val;
     if (node == tail) {
@@ -273,7 +276,7 @@ DoubleLinkedList<T>::DoubleLinkedList(NodoDoble<T>* head, int n) {
 template<class T>
 DoubleLinkedList<T>::DoubleLinkedList(NodoDoble<T>* head) {
     while(head != nullptr) {
-		this->addLast(head->value);
+		this->addLast(&(head->value));
 		head = head->next;
 	}
 }

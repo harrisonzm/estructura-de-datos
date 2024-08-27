@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstddef>
 #include <format>
+#include <string>
+#include <sstream>
 
 Fecha::Fecha()
 {
@@ -36,9 +38,9 @@ std::string Fecha::toString() {
     return std::format("%d,%d,%d", dd, mm, aa);
 }
 
-std::ostream& Fecha::operator <<  (std::ostream& COUT) {
-    std::string txt = toString();
-    COUT << txt;
+std::ostream& Fecha::operator<<(std::ostream& COUT) {
+    
+    COUT << dd << "," << mm << "," << aa <<",";
     return COUT;
 }
 
@@ -84,7 +86,7 @@ std::string Direccion::toString() {
 }
 std::ostream& Direccion::operator<< (std::ostream& COUT) {
     std::string txt = toString();
-    COUT << txt;
+    COUT << calle << "," << nomenclatura << "," << barrio << "," << ciudad << "," << edifico << "," << apto << "," ;
     return COUT;
 }
 
@@ -134,17 +136,22 @@ int Usuario::getTel() { return this->tel; }
 std::string Usuario::getEmail() { return this->email; }
 Direccion* Usuario::getDir() { return this->dir; }
 
-std::string Usuario::toString() {
-    return std::format("%s,%d,%s,%s,%d,%s,%s\n", nombre, id, (fecha_nacimiento->toString()), ciudad_nacimiento, tel, email, dir->toString());
-}
-std::ostream& Usuario::operator<< (std::ostream& COUT) {
-    std::string txt = toString();
-    COUT << txt;
+std::stringstream Usuario::toString() {
+    std::stringstream toPrint;
+    toPrint << std::format("%s,%d,%s,%s,%d,%s,%s\n", nombre, id, (fecha_nacimiento->toString()), ciudad_nacimiento, tel, email, dir->toString());
+    return toPrint;
+} 
+std::ostream& Usuario::operator<< (std::ostream& COUT) 
+{
+
+    COUT << toString().str();
     return COUT;
 }
 bool Usuario::operator!= (Usuario& u) {
-	return &u != this;
+	return  ( this->getId() != u.getId());
 }
-
+bool Usuario::operator==(Usuario& u) {
+    return  (this->getId() == u.getId());
+}
 
 

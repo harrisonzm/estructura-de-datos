@@ -10,6 +10,7 @@ namespace sort
 	std::vector<int> insertion(std::vector<int>);
 	std::vector<int> merge(std::vector<int>, std::vector<int> );
 	std::vector<int> mergeSort(std::vector<int>);
+	void bubbleSortList(DoubleLinkedList<Empleado>* list);
 	NodoDoble<Empleado>* getMiddle(DoubleLinkedList<Empleado>*, size_t);
 	DoubleLinkedList<Empleado>* mergeList(DoubleLinkedList<Empleado>*, DoubleLinkedList<Empleado>*);
 	DoubleLinkedList<Empleado>* mergeSortList(DoubleLinkedList<Empleado>*);

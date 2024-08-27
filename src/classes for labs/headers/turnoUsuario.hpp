@@ -8,7 +8,7 @@ class turnoUsuario
 public:
 	turnoUsuario();
 
-	void registra(Usuario user);
+	void registra(Usuario* user);
 	void atenderSiguiente();
 	void toFile();
 

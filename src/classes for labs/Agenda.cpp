@@ -69,7 +69,7 @@ void Agenda::toFile()
     std::ofstream archivo;
     archivo.open("agenda.txt", std::ios::out);
     for (int i = 0; i < no_registro; i++) {
-        archivo << registro[i].toString();
+        archivo << registro[i].toString().str();
     }
     archivo.close();
 

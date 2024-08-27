@@ -7,12 +7,14 @@
 class Empleado : public Usuario
 {
 	public:
+		void agregarMensaje(Mensaje* msg);
 		void ver_mensaje(int, std::string, std::string, std::string);
 		bool eliminar_mensaje(std::string, std::string, std::string);
 		void showMessages();
 		bool enviar_mensaje(std::string titulo, std::string contenido, NodoDoble<Empleado> destino, std::string fecha);
 
 		void setContraseña(std::string pass);
+		std::string getContraseña();
 
 		bool operator<=(Empleado& member2);
 		bool operator>=(Empleado& member2);
@@ -20,7 +22,7 @@ class Empleado : public Usuario
 		bool operator>(Empleado& member2);
 		
 		std::ostream& operator<<(std::ostream& OUT);
-		std::string toString();
+		std::stringstream toString();
 
 		Empleado(void);
 		Empleado(std::string pass, std::string name , int ID , Fecha* fecha , std::string ciudadN , int telefono , std::string correo , Direccion* direccion );

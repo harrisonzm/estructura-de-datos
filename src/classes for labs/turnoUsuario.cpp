@@ -10,16 +10,19 @@ turnoUsuario::turnoUsuario()
 	usuarioAtendido = *(new Stack<Usuario>());
 }
 
-void turnoUsuario::registra(Usuario user)
+
+
+void turnoUsuario::registra(Usuario* user)
 {
-	registro.enqueue(user);
+	registro.enqueue(*user);
 
 }
 
 void turnoUsuario::atenderSiguiente()
 {	
-	Usuario user = registro.dequeue();
-	this->usuarioAtendido.push(user);
+	Usuario temp = registro.dequeue();
+	 
+	this->usuarioAtendido.push(temp);//need move constructor or a push overloaded with && objects
 }
 
 void turnoUsuario::toFile()

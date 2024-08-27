@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <cstddef>
 #include <format>
@@ -91,9 +92,10 @@ class Usuario {
         std::string getEmail();
         Direccion* getDir();
 
-        std::string toString();
+        std::stringstream toString();
         std::ostream& operator<< (std::ostream& COUT);
         bool operator!=(Usuario& u);
+        bool operator==(Usuario& u);
 
     private:
 

@@ -8,38 +8,34 @@
 void lab6::puntoA() 
 {
 	Stack<int> s;
-	s.push(2);
-	s.push(4);
-	s.push(6);
-	s.push(8);
-	s.push(10);
-	std::cout << s.pop();
-	std::cout << s.pop();
-	std::cout << s.pop();
-	std::cout << s.pop();
-	std::cout << s.pop();
+	for (int i = 2; i <= 10; i+=2) {
+		s.push(i);
+	}
+	std::cout << s.pop() << " ";
+	std::cout << s.pop() << " ";
+	std::cout << s.pop() << " ";
+	std::cout << s.pop() << " ";
+	std::cout << s.pop() << " ";
 
 }
 
 void lab6::puntoB()
 {
 	Queue<int> q;
-	q.enqueue(2);
-	q.enqueue(4);
-	q.enqueue(6);
-	q.enqueue(8);
-	q.enqueue(10);
-	std::cout << q.dequeue();
-	std::cout << q.dequeue();
-	std::cout << q.dequeue();
-	std::cout << q.dequeue();
-	std::cout << q.dequeue();
+	for (int i = 2; i <= 10; i+=2) {
+		q.enqueue(i);
+	}
+	std::cout << q.dequeue()<<" ";
+	std::cout << q.dequeue() << " ";
+	std::cout << q.dequeue() << " ";
+	std::cout << q.dequeue() << " ";
+	std::cout << q.dequeue() << " ";
 }
 
 void lab6::puntoC()
 {
 
-	turnoUsuario* inter = new turnoUsuario();
+	turnoUsuario inter = *(new turnoUsuario());
 
 	Fecha* fecha1 = new Fecha(1, 1, 1);
 	Direccion* dir1 = new Direccion("1", "1", "1", "1", "1", "1");
@@ -59,16 +55,15 @@ void lab6::puntoC()
 	Usuario* user5 = new Usuario("erik", 50, fecha5, "50", 50, "50", dir5);
 
 
-	inter->registra(*user1);
-	inter->registra(*user2);
-	inter->registra(*user3);
-	inter->registra(*user4);
-	inter->registra(*user5);
-	inter->toFile();
-
-	inter->atenderSiguiente();
-	inter->atenderSiguiente();
-	inter->toFile();
-
+	inter.registra(user1);
+	inter.registra(user2);
+	inter.registra(user3);
+	inter.registra(user4);
+	inter.registra(user5);
+	inter.toFile();
+	inter.atenderSiguiente();
+	inter.atenderSiguiente();
+	inter.toFile();
+	
 
 }

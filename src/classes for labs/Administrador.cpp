@@ -9,21 +9,22 @@
 #include <string>
 
 
-void Administrador::toFile()
+void Admin::toFile()
 {
 	std::ofstream file;
 	file.open("../Empleado.txt", std::ios::out);
 	NodoDoble<Empleado>* curr = empleados.First();
 	while (curr != nullptr)
 	{
-		file << curr->value.toString();
+		file << curr->value.toString().str();
 	}
 	file.close();
 }
 
-void Administrador::fromFile()
+void Admin::fromFile()
 {
-
+	
+	bool doSort = false;
 	std::string linea;
 	std::ifstream archivo;
 	archivo.open("Empleado.txt", std::ios::in);
@@ -51,13 +52,16 @@ void Administrador::fromFile()
 
 
 		info->clear();
+		doSort = true;
 	}
 	archivo.close();
 
-	sortEmpleados();
+	if (doSort) {
+		sortEmpleados();
+	}
 
 }
-bool Administrador::eliminarEmpleado(int  id){
+bool Admin::eliminarEmpleado(int  id){
 	NodoDoble<Empleado>* curr = empleados.First();
 	while(curr != nullptr)
 	{
@@ -71,12 +75,12 @@ bool Administrador::eliminarEmpleado(int  id){
 	return false;
 }
 
-void Administrador:: sortEmpleados()
+void Admin:: sortEmpleados()
 {
-	empleados.setFirst(sort::mergeSortList(&empleados)->First());
+	empleados = *sort::mergeSortList(&empleados);
 }
 
-bool Administrador::agregarEmpleado(std::string pass, std::string name, int ID, std::string dd,std::string mm,std::string aa, std::string ciudadN, int tel, std::string email, std::string calle, std::string nomenclatura, std::string barrio, std::string ciudad, std::string edificio, std::string apto) 
+bool Admin::agregarEmpleado(std::string pass, std::string name, int ID, std::string dd,std::string mm,std::string aa, std::string ciudadN, int tel, std::string email, std::string calle, std::string nomenclatura, std::string barrio, std::string ciudad, std::string edificio, std::string apto) 
 {	
 	try
 	{
@@ -88,7 +92,7 @@ bool Administrador::agregarEmpleado(std::string pass, std::string name, int ID, 
 
 		Fecha* fechaO = new Fecha(std::stoi(dd), std::stoi(mm), std::stoi(aa));
 		Empleado* nuevo = new Empleado(pass, name, ID, fechaO, ciudadN, tel, email, dir);
-		empleados.addLast(*nuevo);
+		empleados.addLast(nuevo);
 		sortEmpleados();
 		return true;
 	}
@@ -97,8 +101,14 @@ bool Administrador::agregarEmpleado(std::string pass, std::string name, int ID, 
 		return false;
 	}
 }
+void Admin::agregarEmpleado(Empleado* empl)
+{
+	empleados.addLast(empl);
+	sortEmpleados();
 
-bool Administrador::modificarContraseña(std::string pass, int id)
+}
+
+bool Admin::modificarContraseña(std::string pass, int id)
 {
 	try {
 		NodoDoble<Empleado>* curr = empleados.First();
@@ -115,9 +125,22 @@ bool Administrador::modificarContraseña(std::string pass, int id)
 	}
 }
 
+Empleado* Admin::find(std::string pass, int ID)
+{
+
+	NodoDoble<Empleado>* curr = empleados.First();
+	while (curr->value.getContraseña() == pass && curr->value.getId() == ID && curr != nullptr)
+	{
+		curr = curr->next;
+	
+	}
+
+	return curr != nullptr ? &(curr->value) : new Empleado();
+}
 
 
-Administrador::Administrador( std::string name , std::string passw = "0000", int ID = 0, Fecha* fecha = nullptr, std::string ciudadN = "Na", int tel = 0, std::string email = "Na", Direccion* dir = nullptr)
+
+Admin::Admin( std::string name , std::string passw = "0000", int ID = 0, Fecha* fecha = nullptr, std::string ciudadN = "Na", int tel = 0, std::string email = "Na", Direccion* dir = nullptr)
 {
 	this->contraseña = passw;
 	setNomebre(name);
@@ -131,8 +154,32 @@ Administrador::Administrador( std::string name , std::string passw = "0000", int
 
 }
 
-Administrador::Administrador() {
+void Admin::enviarMensaje(Mensaje* msg)
+{
+	NodoDoble<Empleado>* curr = empleados.First();
+		while (curr != nullptr && curr->value.getId() != msg->getIdDestinatario() )
+		{
+			curr->next;
+		}
+	curr->value.agregarMensaje(msg);
 
 }
 
-Administrador::~Administrador() {}
+Admin::Admin() {
+
+	employT = 'a';
+}
+
+Admin::Admin(Admin& admn) {
+	contraseña = admn.getContraseña();
+	setNomebre(admn.getNombre());
+	setId(admn.getId());
+	setFechaNacimiento(admn.getFechaNacimiento());
+	setCiudadNacimiento(admn.getCiudadNacimiento());
+	setTel(admn.getTel());
+	setemail(admn.getEmail());
+	setDir(admn.getDir());
+
+}
+
+Admin::~Admin() {}

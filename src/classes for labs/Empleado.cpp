@@ -5,6 +5,7 @@
 #include "classes for labs/headers/Usuario.hpp"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 Empleado::Empleado()
 {
@@ -72,9 +73,18 @@ void Empleado::showMessages()
 	std::cout << "/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/" << "\n";
 }
 
+void agregarMensaje(Mensaje* msg)
+{
+	mensajes.addLast(msg);
+}
 bool Empleado::enviar_mensaje(std::string titulo,std::string contenido,NodoDoble<Empleado> destino,std::string fecha)
 {
 	Mensaje  mesg = Mensaje();
+	admin.enviarMensaje(mesg);
+
+
+	
+
 	return true;
 	
 }
@@ -84,6 +94,10 @@ void Empleado::setContraseña(std::string pass)
 	contraseña = pass;
 }
 
+std::string Empleado::getContraseña()
+{
+	return this->contraseña;
+}
 bool Empleado::operator<=(Empleado& member2)
 {
 	return this->getId() <= member2.getId();
@@ -104,14 +118,15 @@ bool Empleado::operator>(Empleado& member2)
 
 std::ostream& Empleado::operator<<(std::ostream& OUT)
 {	
-	OUT << this->toString();
+	OUT << this->toString().str();
 	return  OUT;
 }
 
 
-std::string Empleado::toString()
+std::stringstream Empleado::toString()
 {
-	std::string toPrint = format("%s %s %s %s %s %s %s", getNombre(), getId(), getFechaNacimiento()->toString(), getCiudadNacimiento(), getTel(), getEmail(), getDir()->toString());
+	std::stringstream toPrint;
+	toPrint << format("%s %s %s %s %s %s %s", getNombre(), getId(), getFechaNacimiento()->toString(), getCiudadNacimiento(), getTel(), getEmail(), getDir()->toString());
 	return toPrint;
 }
 

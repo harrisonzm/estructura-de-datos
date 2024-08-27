@@ -8,7 +8,7 @@ public:
     bool isEmpty();
 
     T pop();
-    void push(T elemnt);
+    void push(T& elemnt);
 
     NodoSimple<T>* peek() ;
 
@@ -24,14 +24,15 @@ private:
 template<class T>
 T Stack<T>::pop()
 {
+    
     return storage.removeFirst();
 
 }
 
 template<class T>
-void Stack<T>::push(T elemnt)
+void Stack<T>::push(T& elemnt)
 {
-    storage.addFirst(elemnt);
+    storage.addFirst(&elemnt);
 
 }
 
