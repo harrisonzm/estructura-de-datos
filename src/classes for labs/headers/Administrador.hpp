@@ -1,6 +1,7 @@
 #pragma once
 #include "classes for labs\headers\Empleado.hpp"
 #include "DSA/DoubleLinkedList.hpp"
+#include "classes for labs/headers/Mensaje.hpp"
 #include "classes for labs\headers\Usuario.hpp"
 #include <string>
 class Admin : public Empleado
@@ -11,11 +12,11 @@ class Admin : public Empleado
 		void fromFile();
 		
 		Admin(void);
-		void enviarMensaje(Mensaje* msg);
 		Admin(Admin& admn);
 		Admin(std::string passw , std::string name , int ID , Fecha* fecha , std::string ciudadN , int tel , std::string email , Direccion* dir );
 		~Admin();
 
+		void enviarMensaje(Mensaje* msg);
 		bool eliminarEmpleado(int);
 		bool agregarEmpleado(std::string pass, std::string name, int ID, std::string dd, std::string mm, std::string aa, std::string ciudadN, int tel, std::string email, std::string calle, std::string nomenclatura, std::string barrio, std::string ciudad, std::string edificio, std::string apto);
 		void agregarEmpleado(Empleado* empl);

@@ -73,14 +73,13 @@ void Empleado::showMessages()
 	std::cout << "/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/" << "\n";
 }
 
-void agregarMensaje(Mensaje* msg)
+void Empleado::agregarMensaje(Mensaje* msg)
 {
-	mensajes.addLast(msg);
+	
 }
 bool Empleado::enviar_mensaje(std::string titulo,std::string contenido,NodoDoble<Empleado> destino,std::string fecha)
 {
 	Mensaje  mesg = Mensaje();
-	admin.enviarMensaje(mesg);
 
 
 	

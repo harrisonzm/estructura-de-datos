@@ -7,7 +7,7 @@
 class Empleado : public Usuario
 {
 	public:
-		void agregarMensaje(Mensaje* msg);
+		virtual void agregarMensaje(Mensaje* msg);
 		void ver_mensaje(int, std::string, std::string, std::string);
 		bool eliminar_mensaje(std::string, std::string, std::string);
 		void showMessages();

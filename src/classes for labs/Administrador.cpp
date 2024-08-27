@@ -157,12 +157,13 @@ Admin::Admin( std::string name , std::string passw = "0000", int ID = 0, Fecha* 
 void Admin::enviarMensaje(Mensaje* msg)
 {
 	NodoDoble<Empleado>* curr = empleados.First();
-		while (curr != nullptr && curr->value.getId() != msg->getIdDestinatario() )
+	if (curr != nullptr) {
+		while (curr != nullptr && curr->value.getId() != msg->getIdDestinatario())
 		{
 			curr->next;
 		}
-	curr->value.agregarMensaje(msg);
-
+		curr->value.agregarMensaje(msg);
+	}
 }
 
 Admin::Admin() {

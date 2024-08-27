@@ -78,20 +78,20 @@ std::vector<int> sort::mergeSort(std::vector<int> list)
 	return list;
 }
 
-template<typename T>
-NodoDoble<T>* getMiddle(DoubleLinkedList<T>* list, size_t n) {
-	NodoDoble<T>* curr = list->First();
+
+NodoDoble<Empleado>* sort::getMiddle(DoubleLinkedList<Empleado>* list, size_t n) {
+	NodoDoble<Empleado>* curr = list->First();
 	for (int i = 0; i < n / 2 - 1; i++) {
 		curr = curr->next;
 	}
 	return curr;
 }
 
-template<typename T>
-DoubleLinkedList<T>* mergeList(DoubleLinkedList<T>* left, DoubleLinkedList<T>* right) {
-	DoubleLinkedList<T>* result = new DoubleLinkedList<T>();
-	NodoDoble<T>* l = left->First();
-	NodoDoble<T>* r = right->First();
+
+DoubleLinkedList<Empleado>* sort::mergeList(DoubleLinkedList<Empleado>* left, DoubleLinkedList<Empleado>* right) {
+	DoubleLinkedList<Empleado>* result = new DoubleLinkedList<Empleado>();
+	NodoDoble<Empleado>* l = left->First();
+	NodoDoble<Empleado>* r = right->First();
 	while (l != nullptr && r != nullptr) {
 		if (l->value.getId() < r->value.getId()) {
 			result->addLast(&(l->value));
@@ -113,20 +113,19 @@ DoubleLinkedList<T>* mergeList(DoubleLinkedList<T>* left, DoubleLinkedList<T>* r
 	return result;
 }
 
-template<typename T>
-DoubleLinkedList<T>* mergeSortList(DoubleLinkedList<T>* list) {
+DoubleLinkedList<Empleado>* sort::mergeSortList(DoubleLinkedList<Empleado>* list) {
 	if (list->First() == nullptr || list->First()->next == nullptr) {
 		return list;
 	}
 	size_t size = list->Len();
-	NodoDoble<T>* mid = getMiddle(list, size);
+	NodoDoble<Empleado>* mid = getMiddle(list, size);
 
-	DoubleLinkedList<T>* left = new DoubleLinkedList<T>();
+	DoubleLinkedList<Empleado>* left = new DoubleLinkedList<Empleado>();
 	left->setFirst(list->First());
 	left->setLast(mid);
 	left->setLen(size / 2);
 
-	DoubleLinkedList<T>* right = new DoubleLinkedList<T>();
+	DoubleLinkedList<Empleado>* right = new DoubleLinkedList<Empleado>();
 	right->setFirst(mid->next);
 	if (mid->next != nullptr) mid->next->prev = nullptr;
 	mid->next = nullptr;
