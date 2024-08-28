@@ -1,5 +1,3 @@
 erik,50
 salome,40
 jose,30
-largo,20
-harrison,10

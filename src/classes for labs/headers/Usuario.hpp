@@ -72,6 +72,7 @@ class Usuario {
 
         Usuario(void);
         Usuario(Usuario& u);
+        Usuario(Usuario&& u) noexcept;
         Usuario(std::string name , int ID , Fecha* fecha , std::string ciudad , int telefono , std::string correo , Direccion* direccion );
         ~Usuario();
 
@@ -96,6 +97,7 @@ class Usuario {
         std::ostream& operator<< (std::ostream& COUT);
         bool operator!=(Usuario& u);
         bool operator==(Usuario& u);
+        void operator=(Usuario& u);
 
     private:
 

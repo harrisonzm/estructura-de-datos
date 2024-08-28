@@ -3,7 +3,8 @@
 #include "DSA/Queue.hpp"
 #include "DSA/Stack.hpp"
 #include <fstream>
-
+#include <string>
+#include <sstream>
 turnoUsuario::turnoUsuario()
 {
 	registro = *(new Queue<Usuario>());
@@ -20,9 +21,9 @@ void turnoUsuario::registra(Usuario* user)
 
 void turnoUsuario::atenderSiguiente()
 {	
-	Usuario temp = registro.dequeue();
+	Usuario* temp = new Usuario(registro.dequeue());
 	 
-	this->usuarioAtendido.push(temp);//need move constructor or a push overloaded with && objects
+	this->usuarioAtendido.push(*temp);//need move constructor or a push overloaded with && objects
 }
 
 void turnoUsuario::toFile()
@@ -33,18 +34,25 @@ void turnoUsuario::toFile()
 	NodoSimple<Usuario>* tempUser = registro.peek();
 	while (tempUser != nullptr)
 	{	
-		archivoPendiente << tempUser->value.getNombre() << "," << tempUser->value.getId() << "\n";
+		std::stringstream temp;
+		std::string temps = std::format("{},{}\n", tempUser->value.getNombre(), tempUser->value.getId());
+		temp << temps;
+		archivoPendiente << temp.str();
 		tempUser = tempUser->next;
 	}
 
 	archivoPendiente.close();
 
 	std::ofstream archivoAtendido;
-	archivoPendiente.open("usuariosatendidos.txt", std::ios::out);
+	archivoAtendido.open("usuariosatendidos.txt", std::ios::out);
 	tempUser = usuarioAtendido.peek();
 	while (tempUser != nullptr)
 	{
-		archivoAtendido << tempUser->value.getNombre() << "," << tempUser->value.getId() << "\n";
+		
+		std::stringstream temp;
+		std::string temps = std::format("{},{}\n", tempUser->value.getNombre(), tempUser->value.getId());
+		temp << temps;
+		archivoAtendido << temp.str();
 		tempUser = tempUser->next;
 	}
 	archivoAtendido.close();

@@ -1,149 +1,198 @@
 #pragma once
+#include <typeinfo>
+#include <iostream>
+#include <vector>
 
 template<class T>
 class maxHeap
 {
 public:
 
-	int  parent noexcept (const int index);
-	int left noexcept  (const int index);
-	int  right noexcept (const int index);
+	int  parent(const int index) noexcept;
+	int left(const int index) noexcept;
+	int  right(const int index) noexcept;
+	bool empty() noexcept;
 
 	void insert(T* elemnt);
 	T extractMax();
-	T* maximum noexcept ();
+	T* maximum() noexcept;
 
 
-	void maxHeapify(T* array,const int index);
-	T* buildMaxHeap(T* array);
-	void heapSort(T* array);
+	void maxHeapify(std::vector<T>* arr,const int index);
+	void buildMaxHeap(T (&arr)[20]);
+	void buildMaxHeap(std::vector<T>* unorderedArray);
+	void heapSort();
+	void printHeap();
+	void printFloor(int level, int index);
 
 
-	maxHeap(size_t capacity);
+	maxHeap();
 	~maxHeap();
 
 private:
-	T* array = nullptr;
+	std::vector<T> arr;
 	size_t size = 0;
 };
 
 
 template<class T>
-int  maxHeap<T>::parent noexcept (const int index)
+int  maxHeap<T>::parent(const int index) noexcept
 {
 	return  (index / 2) - 1;
 }
 
 
 template<class T>
-int maxHeap<T>::left noexcept (const int index)
+int maxHeap<T>::left(const int index) noexcept
 {
 	return index * 2 + 1;
 }
 
 template<class T>
-int maxHeap<T>::right noexcept (const int index)
+int maxHeap<T>::right(const int index)noexcept
 {
 	return index * 2 + 2;
+}
+
+
+template<class T>
+bool maxHeap<T>::empty() noexcept
+{
+	return arr.empty();
 }
 
 template<class T>
 T maxHeap<T>::extractMax()
 {
-	T max = array[0];
-	array[0] = array[size - 1];
+	T max = arr[0];
+	arr[0] = arr[size - 1];
 	size--;
-	maxHeapify(array, 0);
+	maxHeapify(&arr, 0);
 	return max;
 }
 
 template<class T>
-T* maxHeap<T>::maximum noexcept ()
+T* maxHeap<T>::maximum() noexcept
 {
-	return array[0];
+	return &arr.at(0);
 }
 
 template<class T>
 void maxHeap<T>::insert(T* elemnt)
 {
-	i = ++size;
-	array[i] = elemnt;
-	while (i > 0 && array[parent(i)] < array[i]) {
-		temp = array[parent(i)];
-		array[parent(i)] = array[i];
-		array[i] = temp;
+	int i = size++;
+	arr[i] = elemnt;
+	while (i > 0 && arr[parent(i)] < arr[i]) {
+		T temp = arr[parent(i)];
+		arr[parent(i)] = arr[i];
+		arr[i] = temp;
 		i = parent(i);
 	}
 	
 }
 
 template<class T>
-void maxHeap<T>::maxHeapify(T* array,const int index)
+void maxHeap<T>::maxHeapify(std::vector<T>* arr,const int index)
 {
 	int l = left(index);
 	int r = right(index);
-	int smaller = index;
-	size_t size = sizeof(*array) / sizeof(T);
-	if (array[l] > array[index] && l <= size)
+	int bigger = index;
+	size_t len = arr->size();
+	if ( l < size && (*arr)[l] > (*arr)[index])
 	{
-		smaller = l;
+		bigger = l;
 
 	}
 
-	if (array[r] > array[index] && r <= size)
+	if ( r < size && (*arr)[r] > (*arr)[index])
 	{
-		smaller = r;
+		bigger = r;
 	}
-	if (smaller != index)
+
+	if (bigger != index)
 	{
-		T temp = array[smaller];
-		array[smaller] = array[index];
-		array[index] = temp;
-		maxHeapify(array, l);
-		maxHeapify(array, r);
+		T temp = (*arr)[bigger];
+		(*arr)[bigger] = (*arr)[index];
+		(*arr)[index] = temp;
+		maxHeapify(arr, l);
+		maxHeapify(arr, r);
 	}
 
 }
 
 template<class T>
-T* maxHeap<T>::buildMaxHeap(T* unorderedArray)
+void maxHeap<T>::buildMaxHeap(T (&unorderedArray)[20])
 {
-	array = unorderedArray;
-	size = sizeof(*unorderedArray) / sizeof(T);
+	int len = 20;
+	size = 20;
+	arr.insert(arr.begin(), unorderedArray, unorderedArray + len);
 
-	for (int i = heapSize; i > 0; i--)
+	for (int i = (len/2)-1; i > 0; i--)
 	{
-		size_t parent = i / 2 - 1;
-		this->maxHeapify(parent);
+		this->maxHeapify(&arr, i);
 	}
+	
+}
+
+template<class T>
+void maxHeap<T>::buildMaxHeap(std::vector<T>* unorderedArray)
+{
+	arr = unorderedArray;
+	int len = unorderedArray->size();
+
+	for (int i = len/2-1; i > 0; i--)
+	{
+		this->maxHeapify(parent(i), i);
+	}
+	arr = unorderedArray;
 }
 
 
 template<class T >
-void maxHeap<T>::heapSort(T* array)
+void maxHeap<T>::heapSort()
 {
-
-	buildMaxHeap(array);
-	for (int i = size; i > 1; i--)
+	for (int i = size-1; i > 1; i--)
 	{
-		T temp = array[i];
-		array[i] = array[0];
-		array[0] = temp;
+		T temp = arr[i];
+		arr[i] = arr[0];
+		arr[0] = temp;
 		size--;
-		maxHeapify(array, 0);
+		maxHeapify(arr, 0);
 	}
 
 }
 
-
 template<class T>
-maxHeap<T>::maxHeap(size_t capacity)
-{
-	size = capacity;
-	array = new T[size];
+void maxHeap<T>::printFloor(int level, int index)
+{	
+	
+	if (index < arr.size()) {
+		
+		std::cout << level << ": " << arr.at(index) << "\n";
+		int l = left(index);
+		int r = right(index);
+
+		printFloor(level + 1, l);
+		printFloor(level + 1, l);
+	}
 }
 
 template<class T>
-maxHeap<T>::~maxHeap() {
-	delete[] array;
+void maxHeap<T>::printHeap()
+{
+	printFloor(0, 0);
+}
+
+
+template<class T>
+maxHeap<T>::maxHeap()
+{
+
+}
+
+template<class T>
+maxHeap<T>::~maxHeap()
+{
+	
+	
 }

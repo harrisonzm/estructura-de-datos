@@ -1,5 +1,5 @@
 #pragma once
-class lab7
-{
+namespace lab7 {
+	void pruebaHeap();
 };
 

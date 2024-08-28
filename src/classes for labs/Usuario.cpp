@@ -105,6 +105,20 @@ Usuario::Usuario(Usuario& u) {
 
 }
 
+Usuario::Usuario(Usuario&& u) noexcept
+{
+    nombre = u.nombre;
+    id = u.id;
+    fecha_nacimiento = u.getFechaNacimiento();
+    u.setFechaNacimiento(nullptr);
+    ciudad_nacimiento = u.ciudad_nacimiento;
+    tel = u.tel;
+    email = u.email;
+    dir = u.getDir();
+    u.setDir(nullptr);
+    
+}
+
 Usuario::Usuario(std::string name, int ID = 0, Fecha* fecha = nullptr, std::string ciudad = "Na", int telefono = 0, std::string correo = "Na", Direccion* direccion = nullptr) {
 nombre            = name;
 id                = ID;
@@ -154,4 +168,15 @@ bool Usuario::operator==(Usuario& u) {
     return  (this->getId() == u.getId());
 }
 
+void  Usuario::operator=(Usuario& u)
+{
+    nombre = u.nombre;
+    id = u.id;
+    fecha_nacimiento = u.getFechaNacimiento();
+    ciudad_nacimiento = u.ciudad_nacimiento;
+    tel = u.tel;
+    email = u.email;
+    dir = u.getDir();
+    
+}
 
