@@ -23,7 +23,7 @@ void lab6::puntoB()
 {
 	Queue<int> q;
 	for (int i = 2; i <= 10; i+=2) {
-		q.enqueue(i);
+		q.enqueue(&i);
 	}
 	std::cout << q.dequeue()<<" ";
 	std::cout << q.dequeue() << " ";

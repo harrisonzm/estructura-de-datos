@@ -14,7 +14,7 @@ public:
 
 
     //MODIFIERS
-    void enqueue( T& value) noexcept;
+    void enqueue( T* value) noexcept;
     T dequeue() noexcept;
 
 
@@ -42,9 +42,9 @@ NodoSimple<T>* Queue<T>::peek() noexcept
 }
 
 template<typename T>
-void Queue<T>::enqueue( T& value) noexcept
+void Queue<T>::enqueue( T* value) noexcept
 {
-    storage->addFirst(&value);
+    storage->addFirst( value);
 }
 
 template<typename T>

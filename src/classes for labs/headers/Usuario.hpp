@@ -71,9 +71,10 @@ class Usuario {
     public:
 
         Usuario(void);
-        Usuario(Usuario& u);
+        Usuario(const Usuario& u)noexcept;
         Usuario(Usuario&& u) noexcept;
         Usuario(std::string name , int ID , Fecha* fecha , std::string ciudad , int telefono , std::string correo , Direccion* direccion );
+        Usuario(std::string name, int ID);
         ~Usuario();
 
 
@@ -86,7 +87,7 @@ class Usuario {
         void setDir(Direccion* direccion);
 
         std::string getNombre();
-        int getId();
+        int getId() const ;
         Fecha* getFechaNacimiento();
         std::string getCiudadNacimiento();
         int getTel();
@@ -94,7 +95,7 @@ class Usuario {
         Direccion* getDir();
 
         std::stringstream toString();
-        std::ostream& operator<< (std::ostream& COUT);
+        friend std::ostream& operator<<(std::ostream& os, const Usuario& usuario);
         bool operator!=(Usuario& u);
         bool operator==(Usuario& u);
         void operator=(Usuario& u);

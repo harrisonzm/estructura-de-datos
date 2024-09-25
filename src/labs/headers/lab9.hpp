@@ -1,7 +1,7 @@
 #pragma once
-namespace lab8
+namespace lab9
 {
 	void puntoA();
 	void puntoB();
-}
-
+	void puntoC();
+};

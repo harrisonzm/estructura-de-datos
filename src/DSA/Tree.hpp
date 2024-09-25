@@ -12,6 +12,8 @@ struct TreeNode {
 template<class T>
 class Tree {
 public:
+
+	virtual bool isRoot(const TreeNode<T>* node);
 	virtual bool isParent(const TreeNode<T>* const Parent, const TreeNode<T>* const Child);
 	virtual bool isAncestor(const TreeNode<T>* const Ancstr, TreeNode<T>* const node);
 	virtual bool isBrother(TreeNode<T>* brthr, TreeNode<T>* node);
@@ -21,8 +23,8 @@ public:
 	virtual TreeNode<T> Parent(TreeNode<T>* node);
 
 
-	virtual int  depth(TreeNode<T>* node);	
-	virtual int height(TreeNode<T>* node);
+	virtual int  depth(const TreeNode<T>* const node);	
+	virtual int height(const TreeNode<T>* const node);
 
 private:
 	TreeNode<T>* root = nullptr;
@@ -31,23 +33,35 @@ private:
 
 //IMPLEMENTATION
 
-template<class T> bool Tree<T>::isParent(const TreeNode<T>* const parent, const TreeNode<T>* const child)
+template<class T>
+bool Tree<T>::isRoot(const TreeNode<T>* node)
 {
-	return child->parent == parent;
+	return node == root;
+}
+
+template<class T> 
+bool Tree<T>::isParent(const TreeNode<T>* const parent, const TreeNode<T>* const child)
+{
+	return parent(child) == parent;
 
 }
 
-template<class T> bool Tree<T>::isAncestor(const TreeNode<T>* const ancstr, TreeNode<T>* const node)
+template<class T> 
+bool Tree<T>::isAncestor(const TreeNode<T>* const ancstr, TreeNode<T>* const node)
 {	
-	while (parent(node) != ancstr && parent(node) != nullptr) {
+	
+	
+	while (parent(node) != ancstr &&  !this->isRoot(node) )
+	{
 		node = parent(node);
 	}
 
-	return  parent(node) != nullptr ;
+	return  parent(node) != nullptr;
 
 }
 
-template<class T> bool Tree<T>::isBrother(TreeNode<T>* brothr, TreeNode<T>* node)
+template<class T>
+bool Tree<T>::isBrother(TreeNode<T>* brothr, TreeNode<T>* node)
 {
 	NodoSimple<T>* curr = node->parent.children->First();
 	while (curr != brothr && curr != nullptr)
@@ -57,7 +71,8 @@ template<class T> bool Tree<T>::isBrother(TreeNode<T>* brothr, TreeNode<T>* node
 	return curr != nullptr;
 }
 
-template<class T> bool Tree<T>::ischild(TreeNode<T>* child, TreeNode<T>* parent)
+template<class T>
+bool Tree<T>::ischild(TreeNode<T>* child, TreeNode<T>* parent)
 {
 	NodoSimple<T>* curr = parent->children->First();
 	while (curr != child && curr != nullptr)
@@ -67,7 +82,8 @@ template<class T> bool Tree<T>::ischild(TreeNode<T>* child, TreeNode<T>* parent)
 	return curr != nullptr;
 }
 
-template<class T> bool Tree<T>::isExternal(TreeNode<T>* node)
+template<class T>
+bool Tree<T>::isExternal(TreeNode<T>* node)
 {
 	return node->children == nullptr;
 
@@ -80,7 +96,7 @@ TreeNode<T> Tree<T>::Parent(TreeNode<T>* node)
 
 }
 template<class T> 
-int Tree<T>::depth(TreeNode<T>* node)
+int Tree<T>::depth(const TreeNode<T>* const node)
 {
 	if (node == root) {
 		return 0;
@@ -91,16 +107,19 @@ int Tree<T>::depth(TreeNode<T>* node)
 
 
 }
+
 template<class T> 
-int Tree<T>:: height(TreeNode<T>* node)
+int Tree<T>:: height( const TreeNode<T>* const node)
 {
 	if ( isExternal(node)) {
 		return 0;
 
 	}
 	else {
+
 		int maxHeight = 0;
 		NodoSimple<T>* const child = node->children;
+
 		while (child->next != nullptr)
 		{
 			maxHeight = max(maxHeight, height(child->value));

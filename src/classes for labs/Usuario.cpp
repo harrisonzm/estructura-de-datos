@@ -94,30 +94,32 @@ Usuario::Usuario()
 {
 
 }
-Usuario::Usuario(Usuario& u) {
+// Copy constructor
+Usuario::Usuario(const Usuario& u) noexcept {
     nombre = u.nombre;
     id = u.id;
-    fecha_nacimiento =new Fecha( *u.fecha_nacimiento);
+    // Deep copy of dynamically allocated members
+    fecha_nacimiento = new Fecha(*u.fecha_nacimiento);
     ciudad_nacimiento = u.ciudad_nacimiento;
     tel = u.tel;
     email = u.email;
-    dir = new Direccion(*u.dir);
-
+    dir = new Direccion(*u.dir);  // Assuming Direccion has a copy constructor
 }
 
-Usuario::Usuario(Usuario&& u) noexcept
-{
-    nombre = u.nombre;
+
+// Move constructor
+Usuario::Usuario(Usuario&& u) noexcept {
+    nombre = std::move(u.nombre);  // Move the string member
     id = u.id;
-    fecha_nacimiento = u.getFechaNacimiento();
-    u.setFechaNacimiento(nullptr);
-    ciudad_nacimiento = u.ciudad_nacimiento;
+    fecha_nacimiento = u.fecha_nacimiento;  // Steal the pointer
+    u.fecha_nacimiento = nullptr;  // Leave the source in a valid state
+    ciudad_nacimiento = std::move(u.ciudad_nacimiento);  // Move the string member
     tel = u.tel;
-    email = u.email;
-    dir = u.getDir();
-    u.setDir(nullptr);
-    
+    email = std::move(u.email);  // Move the string member
+    dir = u.dir;  // Steal the pointer
+    u.dir = nullptr;  // Leave the source in a valid state
 }
+
 
 Usuario::Usuario(std::string name, int ID = 0, Fecha* fecha = nullptr, std::string ciudad = "Na", int telefono = 0, std::string correo = "Na", Direccion* direccion = nullptr) {
 nombre            = name;
@@ -127,6 +129,12 @@ ciudad_nacimiento = ciudad;
 tel               = telefono;
 email             = correo;
 dir               = direccion;
+}
+
+Usuario::Usuario(std::string name, int id)
+{
+    nombre = name;
+    this->id = id;
 }
 
 Usuario::~Usuario() {
@@ -143,7 +151,7 @@ void Usuario::setemail(std::string email) { this->email = email; }
 void Usuario::setDir(Direccion* direccion) { this->dir = direccion; }
 
 std::string Usuario::getNombre() { return this->nombre; }
-int Usuario::getId() { return this->id; }
+int Usuario::getId() const { return this->id; }
 Fecha* Usuario::getFechaNacimiento() { return this->fecha_nacimiento; }
 std::string Usuario::getCiudadNacimiento() { return this->ciudad_nacimiento; }
 int Usuario::getTel() { return this->tel; }
@@ -155,11 +163,10 @@ std::stringstream Usuario::toString() {
     toPrint << std::format("%s,%d,%s,%s,%d,%s,%s\n", nombre, id, (fecha_nacimiento->toString()), ciudad_nacimiento, tel, email, dir->toString());
     return toPrint;
 } 
-std::ostream& Usuario::operator<< (std::ostream& COUT) 
-{
 
-    COUT << toString().str();
-    return COUT;
+std::ostream& operator<<(std::ostream& os, const Usuario& usuario) {
+    os << "Usuario ID: " << usuario.getId();
+    return os;
 }
 bool Usuario::operator!= (Usuario& u) {
 	return  ( this->getId() != u.getId());

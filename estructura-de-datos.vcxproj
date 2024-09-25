@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\labs\lab9.cpp" />
     <ClCompile Include="src\classes for labs\Bandeja.cpp" />
     <ClCompile Include="src\labs\example.cpp" />
     <ClCompile Include="src\labs\lab8.cpp" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <ClInclude Include="src\classes for labs\headers\Bandeja.hpp" />
     <ClInclude Include="src\DSA\PriorityQueue.hpp" />
+    <ClInclude Include="src\DSA\BinarySearchTree.hpp" />
     <ClInclude Include="src\DSA\Tree.hpp" />
     <ClInclude Include="src\labs\headers\lab8.hpp" />
     <ClInclude Include="src\labs\headers\lab7.hpp" />
@@ -61,6 +63,7 @@
     <ClInclude Include="src\labs\headers\lab4.hpp" />
     <ClInclude Include="src\labs\headers\lab5.hpp" />
     <ClInclude Include="src\classes for labs\headers\turnoUsuario.hpp" />
+    <ClInclude Include="src\labs\headers\lab9.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\files\Empleados.txt" />

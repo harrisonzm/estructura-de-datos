@@ -44,7 +44,7 @@ T& DynamicArray<T>::remove(int index)
         array[i - 1] = array[i];
 
     }
-    array[tamaño - 1] = NULL;
+    array[tamaño - 1] = nullptr;
     return temp;
 }
 

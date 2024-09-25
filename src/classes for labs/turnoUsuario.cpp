@@ -15,7 +15,7 @@ turnoUsuario::turnoUsuario()
 
 void turnoUsuario::registra(Usuario* user)
 {
-	registro.enqueue(*user);
+	registro.enqueue(user);
 
 }
 
